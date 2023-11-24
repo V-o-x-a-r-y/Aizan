@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/UI-select.mp3-6ba648843b7a35e4c3879682bbcb6946.mp3str"
+
+[deps]
+
+source_file="res://assets/BasePlateScenes/UI_sounds/UI-select.mp3"
+dest_files=[ "res://.import/UI-select.mp3-6ba648843b7a35e4c3879682bbcb6946.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

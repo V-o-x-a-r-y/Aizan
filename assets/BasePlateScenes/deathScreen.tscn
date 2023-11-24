@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/BasePlateScenes/deathScreen.gd" type="Script" id=1]
+
+[node name="deathScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="youDied" type="Label" parent="."]
+margin_left = 196.0
+margin_top = 69.0
+margin_right = 236.0
+margin_bottom = 83.0
+text = "YOU DIED"
+
+[node name="restartButton" type="Button" parent="."]
+margin_left = 170.0
+margin_top = 101.0
+margin_right = 282.0
+margin_bottom = 121.0
+text = "RESTART"
+
+[node name="menuButton" type="Button" parent="."]
+margin_left = 170.0
+margin_top = 133.0
+margin_right = 282.0
+margin_bottom = 153.0
+text = "MENU"
