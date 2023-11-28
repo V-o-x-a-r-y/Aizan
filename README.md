@@ -12,5 +12,7 @@ Les autres contributeur n'ont de compte GitHub, ou nous en avons pas connaisance
 ## Information supplémentaire
 Vous pouvez cloner ce dépôt et exécuter l'application localement en suivant ces étapes :
 
-Clonez le dépôt : `git clone https://github.com/HollowNoGit/NSI_Projet.git`
-Accédez au répertoire du projet : `cd NSI_Projet`
+- Clonez le dépôt : `git clone https://github.com/HollowNoGit/NSI_Projet.git`
+- Accédez au répertoire du projet : `cd NSI_Projet`
+- Installer le logiciel [Godot 3.5](https://godotengine.org/)
+- Ouvrir avec [Godot 3.5](https://godotengine.org/) le projet installer
