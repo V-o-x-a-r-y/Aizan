@@ -4,12 +4,15 @@ extends KinematicBody2D
 signal health_changed(amount)
 signal score_changed(amount)
 
+#inventory
+var inventory : Array = []
 # stats
-var health : int = 3
+var health : int = 10
 var score: int = 0
 var attackCooldown : int = 0.1
 var attackDamage : int = 1
 var knockbackMultiplier : int = 1
+var poisonResistance : int = 0
 # those are for 'Movement'
 var speed : int = 100
 var jumpForce : int = 400
@@ -26,13 +29,27 @@ onready var camera = get_node("Camera2D")
 onready var cameraInitPos = camera.position
 onready var lowCameraPos = cameraInitPos.y + 200
 
+#other
+var poisontimer
+
 func _ready():
 	# Initialize the attack cooldown timer
 	attackCooldownTimer = Timer.new()
 	attackCooldownTimer.one_shot = true
+	poisontimer = Timer.new()
+	poisontimer.one_shot = true
+	add_child(poisontimer)
 # warning-ignore:return_value_discarded
 	attackCooldownTimer.connect("timeout", self, "_on_attack_cooldown_timeout")
 	add_child(attackCooldownTimer)
+	
+	#get all items in the scene 
+	for i in get_parent().get_parent().itemList:
+		get_parent().get_parent().get_node(i).connect("itemPickup",self,"_on_itemPickup")
+	for i in get_parent().get_parent().enemyList:
+		get_parent().get_parent().get_node(i).get_node("Enemy").connect("damagePlayer",self,"_on_damagePlayer")
+	for i in get_parent().get_parent().zoneList:
+		get_parent().get_parent().get_node(i).connect("applyEffect",self,"_on_applyEffect")
 
 func _physics_process(delta):
 	if health<=0:
@@ -145,3 +162,23 @@ func _on_damagePlayer(amount, direction):
 	health-=amount
 	emit_signal("health_changed", health)
 	knockbackFromDamage(knockbackMultiplier, direction)
+
+func _on_itemPickup(ID):
+	inventory.append(ID)
+	print(inventory)
+
+func poison(duration, strenght):
+	for i in range(duration):
+		health-=(strenght-(0.1*poisonResistance))
+		emit_signal("health_changed", health)
+		poisontimer.start(0.5)
+		yield(poisontimer, "timeout")
+
+func _on_applyEffect(type,duration,strenght):
+	match type:
+		"poison":
+			poison(duration,strenght)
+		"fire":
+			pass
+		"radiation":
+			pass

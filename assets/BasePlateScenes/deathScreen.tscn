@@ -14,13 +14,6 @@ margin_right = 236.0
 margin_bottom = 83.0
 text = "YOU DIED"
 
-[node name="restartButton" type="Button" parent="."]
-margin_left = 170.0
-margin_top = 101.0
-margin_right = 282.0
-margin_bottom = 121.0
-text = "RESTART"
-
 [node name="menuButton" type="Button" parent="."]
 margin_left = 170.0
 margin_top = 133.0

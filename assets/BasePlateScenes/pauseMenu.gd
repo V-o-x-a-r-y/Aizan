@@ -1,5 +1,7 @@
 extends Control
 
+signal menubuttonclicked(level_name, doorPos)
+
 func _ready():
 	$continueButton.connect("pressed", self, "_on_continuebutton_pressed")
 	$settingsButton.connect("pressed", self, "_on_settingsbutton_pressed")
@@ -16,4 +18,5 @@ func _on_continuebutton_pressed():
 func _on_settingsbutton_pressed():
 	pass
 func _on_menubutton_pressed():
-	get_tree().change_scene("res://assets/BasePlateScenes/main_menu.tscn")
+	var doorPos="null"
+	emit_signal("menubuttonclicked","backTomenu", doorPos)

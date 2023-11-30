@@ -67,7 +67,7 @@ func attack():
 				print("error in attack")
 		add_child(hit1)
 		var timer = Timer.new() # used to remove the attack hitboxes after a lil' time.
-		timer.wait_time = 0.2
+		timer.wait_time = 0.1
 		timer.one_shot = true
 		timer.connect("timeout", self, "_on_hit1_timeout", [hit1])
 		add_child(timer)
