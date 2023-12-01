@@ -3,8 +3,8 @@ extends KinematicBody2D
 #signals    please know that I'm really bad at using signals, as I've never done it before.
 signal health_changed(amount)
 signal score_changed(amount)
-
-#inventory
+signal effect_changed(effect,amount)
+# inventory
 var inventory : Array = []
 # stats
 var health : int = 10
@@ -24,13 +24,17 @@ var vel : Vector2 = Vector2()
 var playerDirection : bool = 0
 var attackCooldownTimer
 
-#those three for 'camera_down'
+# those three are for 'camera_down'
 onready var camera = get_node("Camera2D")
 onready var cameraInitPos = camera.position
 onready var lowCameraPos = cameraInitPos.y + 200
 
-#other
+# for effects
 var poisontimer
+var poisonremovetimer
+var playerEffectList : Array = []
+var poisonbarvalue: int = 0
+var is_poisonclimbing: bool = false
 
 func _ready():
 	# Initialize the attack cooldown timer
@@ -39,6 +43,9 @@ func _ready():
 	poisontimer = Timer.new()
 	poisontimer.one_shot = true
 	add_child(poisontimer)
+	poisonremovetimer = Timer.new()
+	poisontimer.one_shot = true
+	add_child(poisonremovetimer)
 # warning-ignore:return_value_discarded
 	attackCooldownTimer.connect("timeout", self, "_on_attack_cooldown_timeout")
 	add_child(attackCooldownTimer)
@@ -50,6 +57,8 @@ func _ready():
 		get_parent().get_parent().get_node(i).get_node("Enemy").connect("damagePlayer",self,"_on_damagePlayer")
 	for i in get_parent().get_parent().zoneList:
 		get_parent().get_parent().get_node(i).connect("applyEffect",self,"_on_applyEffect")
+	for i in get_parent().get_parent().zoneList:
+		get_parent().get_parent().get_node(i).connect("removeEffect",self,"_on_removeEffect")
 
 func _physics_process(delta):
 	if health<=0:
@@ -100,7 +109,7 @@ func _physics_process(delta):
 			true:
 				sword_hit.position = self.position + Vector2(15, 0)  # Adjust the position as needed
 			_:
-				print("Invalid direction") # won't happen but y not I guess. Should I just put a 'pass' ? Idk man..
+				return
 		get_parent().add_child(sword_hit)
 		var timer = Timer.new() # timer to make the hitbox despawn.
 		timer.wait_time = 0.1
@@ -115,6 +124,7 @@ func _physics_process(delta):
 	#camera_down
 	if Input.is_action_pressed("camera_down") and is_on_floor():
 		camera.position.y = lowCameraPos # Lowers the camera
+		
 	else:
 		camera.position.y = cameraInitPos.y  # Reset camera position to initial y position
 
@@ -127,7 +137,6 @@ func _on_sword_hit_enter(body):
 			if body.health<=0: # if last hit, grant score to player.
 				score+=body.heldscore
 				emit_signal("score_changed", score)
-			print('enemyHP: ',body.health)
 	# if u hit a wall:
 	elif body in get_tree().get_nodes_in_group("wall"):
 		knockbackFromWallHit(knockbackMultiplier,!playerDirection)
@@ -165,20 +174,37 @@ func _on_damagePlayer(amount, direction):
 
 func _on_itemPickup(ID):
 	inventory.append(ID)
-	print(inventory)
-
-func poison(duration, strenght):
-	for i in range(duration):
-		health-=(strenght-(0.1*poisonResistance))
-		emit_signal("health_changed", health)
-		poisontimer.start(0.5)
-		yield(poisontimer, "timeout")
 
 func _on_applyEffect(type,duration,strenght):
 	match type:
 		"poison":
-			poison(duration,strenght)
-		"fire":
-			pass
+			poisonbarvalue+=1
+			playerEffectList.append("poison")
+			emit_signal("effect_changed", "poison", poisonbarvalue)
+			if $Camera2D/effectsHUD/Poison.value>=10:
+				for i in range(duration):
+					health-=(strenght-(0.1*poisonResistance))
+					poisonbarvalue-=1
+					emit_signal("health_changed", health)
+					emit_signal("effect_changed", "poison", poisonbarvalue)
+					poisontimer.start(0.5)
+					yield(poisontimer, "timeout")
+			is_poisonclimbing=true
 		"radiation":
 			pass
+		_:
+			return
+func _on_removeEffect(type):
+	match type:
+		"poison":
+			if is_poisonclimbing==false:
+				for i in range(poisonbarvalue):
+					if is_poisonclimbing==false and poisonbarvalue>0:
+						poisonbarvalue-=1
+						emit_signal("effect_changed", "poison", poisonbarvalue)
+						poisonremovetimer.start(0.5)
+						yield(poisonremovetimer, "timeout")
+		"radiation":
+			pass
+		_:
+			return

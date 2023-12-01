@@ -10,7 +10,6 @@ func _ready():
 func _on_continuebutton_pressed():
 	visible = false
 	get_parent().get_parent().set_physics_process(true)
-	print("running anew")
 	for friend in get_tree().get_nodes_in_group("friendly"):
 		friend.set_physics_process(true)
 	for enemy in get_tree().get_nodes_in_group("hostile"):

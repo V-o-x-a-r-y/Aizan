@@ -64,7 +64,7 @@ func attack():
 			true:
 				hit1.position = Vector2(50,0)  # Adjust the position as needed
 			_:
-				print("error in attack")
+				return
 		add_child(hit1)
 		var timer = Timer.new() # used to remove the attack hitboxes after a lil' time.
 		timer.wait_time = 0.1

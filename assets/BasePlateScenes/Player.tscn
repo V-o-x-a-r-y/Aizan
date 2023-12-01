@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/BasePlateScenes/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/BasePlateScenes/BasePlateSprites/idle_player.png" type="Texture" id=2]
 [ext_resource path="res://assets/BasePlateScenes/playerHUD.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/BasePlateScenes/deathScreen.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/BasePlateScenes/pauseMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/BasePlateScenes/effectsHUD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/BasePlateScenes/quicktips.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/BasePlateScenes/textInteraction.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 13.3333 )
@@ -60,5 +63,24 @@ margin_top = -35.7143
 margin_right = -63.0
 margin_bottom = -35.7143
 
+[node name="effectsHUD" parent="KinematicBody2D/Camera2D" instance=ExtResource( 6 )]
+margin_left = -101.0
+margin_top = -317.143
+margin_right = -101.0
+margin_bottom = -317.143
+
+[node name="quicktips" parent="KinematicBody2D/Camera2D" instance=ExtResource( 7 )]
+margin_left = 197.0
+margin_top = -157.143
+margin_right = 197.0
+margin_bottom = -157.143
+
+[node name="textInteraction" parent="KinematicBody2D/Camera2D" instance=ExtResource( 8 )]
+margin_left = -64.0
+margin_top = 41.4286
+margin_right = -64.0
+margin_bottom = 41.4286
+
+[connection signal="effect_changed" from="KinematicBody2D" to="KinematicBody2D/Camera2D/effectsHUD" method="_on_Player_effect_changed"]
 [connection signal="health_changed" from="KinematicBody2D" to="KinematicBody2D/Camera2D/playerHUD" method="_on_KinematicBody2D_health_changed"]
 [connection signal="score_changed" from="KinematicBody2D" to="KinematicBody2D/Camera2D/playerHUD" method="_on_KinematicBody2D_score_changed"]

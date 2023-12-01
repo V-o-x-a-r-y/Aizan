@@ -7,6 +7,8 @@ export (Array) var doorList
 export (Array) var itemList
 export (Array) var enemyList
 export (Array) var zoneList # zone are Areas that give the player Effects, like poison or fire.
+export (Array) var tipList
+export (Array) var textInteractionList
 
 func _ready():
 	if len(doorList)!=null:

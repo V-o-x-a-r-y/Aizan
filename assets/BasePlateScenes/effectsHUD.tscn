@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/BasePlateScenes/UI_sprites/UI_select.png" type="Texture" id=1]
+[ext_resource path="res://assets/BasePlateScenes/UI_sprites/lifebar.png" type="Texture" id=2]
+[ext_resource path="res://assets/BasePlateScenes/effectsHUD.gd" type="Script" id=3]
+
+[node name="effectsHUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="Poison" type="TextureProgress" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+max_value = 10.0
+texture_under = ExtResource( 1 )
+texture_over = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+tint_progress = Color( 0.266667, 1, 0, 1 )

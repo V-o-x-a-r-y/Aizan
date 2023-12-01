@@ -14,7 +14,6 @@ func _ready(): # the $ is equivalent to get_node(), I just remembered that when 
 
 func _on_playbutton_pressed():
 	emit_signal("level_changed",level_name, doorPos)
-	print(self)
 # warning-ignore:return_value_discarded
 
 func _on_settingsbutton_pressed():
