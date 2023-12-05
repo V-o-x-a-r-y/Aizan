@@ -97,7 +97,7 @@ func chase(direction):
 		true:
 			vel.x+=chaseSpeed
 		_:
-			pass
+			return
 	vel = move_and_slide(vel, Vector2.UP)
 
 func idle():
@@ -113,7 +113,7 @@ func knockback(multiplier,direction):
 		true:
 			knockBackDirection=Vector2(10*multiplier,0)
 		_:
-			pass
+			return
 	position+=knockBackDirection
 
 # called every frame

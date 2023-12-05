@@ -1,0 +1,376 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/BasePlateScenes/BasePlateSprites/wall.png" type="Texture" id=1]
+[ext_resource path="res://assets/BasePlateScenes/BasePlateSprites/darkblue_box.png" type="Texture" id=2]
+[ext_resource path="res://assets/BasePlateScenes/BasePlateSprites/idle_enemy.png" type="Texture" id=3]
+[ext_resource path="res://assets/BasePlateScenes/InventoryScript.gd" type="Script" id=4]
+[ext_resource path="res://assets/BasePlateScenes/BasePlateSprites/purple_box.png" type="Texture" id=5]
+
+[node name="Inventory" type="Control"]
+margin_left = -334.0
+margin_top = -230.0
+margin_right = -294.0
+margin_bottom = -190.0
+rect_scale = Vector2( 0.71095, 0.71095 )
+script = ExtResource( 4 )
+
+[node name="EquipementTab" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="bg" type="TextureRect" parent="EquipementTab"]
+margin_left = 56.0985
+margin_top = 24.0
+margin_right = 882.099
+margin_bottom = 564.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="mods" type="GridContainer" parent="EquipementTab"]
+margin_left = 161.755
+margin_top = 92.8335
+margin_right = 365.755
+margin_bottom = 400.834
+rect_min_size = Vector2( 4, 4 )
+rect_scale = Vector2( 0.871361, 0.837505 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+columns = 2
+
+[node name="mod0" type="TextureRect" parent="EquipementTab/mods"]
+margin_right = 100.0
+margin_bottom = 100.0
+texture = ExtResource( 2 )
+
+[node name="mod0Button" type="Button" parent="EquipementTab/mods/mod0"]
+margin_right = 98.0
+margin_bottom = 99.0
+flat = true
+
+[node name="mod1" type="TextureRect" parent="EquipementTab/mods"]
+margin_left = 104.0
+margin_right = 204.0
+margin_bottom = 100.0
+texture = ExtResource( 2 )
+
+[node name="mod1Button" type="Button" parent="EquipementTab/mods/mod1"]
+margin_right = 98.0
+margin_bottom = 99.0
+flat = true
+
+[node name="mod2" type="TextureRect" parent="EquipementTab/mods"]
+margin_top = 104.0
+margin_right = 100.0
+margin_bottom = 204.0
+texture = ExtResource( 2 )
+
+[node name="mod2Button" type="Button" parent="EquipementTab/mods/mod2"]
+margin_right = 98.0
+margin_bottom = 99.0
+flat = true
+
+[node name="mod3" type="TextureRect" parent="EquipementTab/mods"]
+margin_left = 104.0
+margin_top = 104.0
+margin_right = 204.0
+margin_bottom = 204.0
+texture = ExtResource( 2 )
+
+[node name="mod3Button" type="Button" parent="EquipementTab/mods/mod3"]
+margin_right = 98.0
+margin_bottom = 99.0
+flat = true
+
+[node name="mod4" type="TextureRect" parent="EquipementTab/mods"]
+margin_top = 208.0
+margin_right = 100.0
+margin_bottom = 308.0
+texture = ExtResource( 2 )
+
+[node name="mod4Button" type="Button" parent="EquipementTab/mods/mod4"]
+margin_right = 98.0
+margin_bottom = 99.0
+flat = true
+
+[node name="mod5" type="TextureRect" parent="EquipementTab/mods"]
+margin_left = 104.0
+margin_top = 208.0
+margin_right = 204.0
+margin_bottom = 308.0
+texture = ExtResource( 2 )
+
+[node name="mod5Button" type="Button" parent="EquipementTab/mods/mod5"]
+margin_right = 98.0
+margin_bottom = 99.0
+flat = true
+
+[node name="injector" type="TextureRect" parent="EquipementTab"]
+margin_left = 419.157
+margin_top = 84.3941
+margin_right = 519.157
+margin_bottom = 184.394
+texture = ExtResource( 2 )
+
+[node name="injectorButton" type="Button" parent="EquipementTab/injector"]
+margin_right = 98.0
+margin_bottom = 99.0
+flat = true
+
+[node name="shots" type="VBoxContainer" parent="EquipementTab"]
+margin_left = 402.279
+margin_top = 191.293
+margin_right = 502.279
+margin_bottom = 603.293
+rect_scale = Vector2( 1.3771, 0.375025 )
+
+[node name="shot0" type="TextureRect" parent="EquipementTab/shots"]
+margin_right = 100.0
+margin_bottom = 100.0
+texture = ExtResource( 2 )
+
+[node name="shot0Button" type="Button" parent="EquipementTab/shots/shot0"]
+margin_right = 98.0
+margin_bottom = 99.0
+flat = true
+
+[node name="shot1" type="TextureRect" parent="EquipementTab/shots"]
+margin_top = 104.0
+margin_right = 100.0
+margin_bottom = 204.0
+texture = ExtResource( 2 )
+
+[node name="shot1Button" type="Button" parent="EquipementTab/shots/shot1"]
+margin_right = 98.0
+margin_bottom = 99.0
+flat = true
+
+[node name="shot2" type="TextureRect" parent="EquipementTab/shots"]
+margin_top = 208.0
+margin_right = 100.0
+margin_bottom = 308.0
+texture = ExtResource( 2 )
+
+[node name="shot2Button" type="Button" parent="EquipementTab/shots/shot2"]
+margin_right = 98.0
+margin_bottom = 99.0
+flat = true
+
+[node name="shot3" type="TextureRect" parent="EquipementTab/shots"]
+margin_top = 312.0
+margin_right = 100.0
+margin_bottom = 412.0
+texture = ExtResource( 2 )
+
+[node name="shot3Button" type="Button" parent="EquipementTab/shots/shot3"]
+margin_right = 98.0
+margin_bottom = 99.0
+flat = true
+
+[node name="weapon" type="TextureRect" parent="EquipementTab"]
+margin_left = 593.572
+margin_top = 95.6467
+margin_right = 779.572
+margin_bottom = 354.647
+texture = ExtResource( 2 )
+expand = true
+
+[node name="shot4Button" type="Button" parent="EquipementTab/weapon"]
+margin_right = 98.0
+margin_bottom = 99.0
+flat = true
+
+[node name="items" type="HBoxContainer" parent="EquipementTab"]
+margin_left = 208.172
+margin_top = 393.839
+margin_right = 724.172
+margin_bottom = 493.839
+rect_pivot_offset = Vector2( -312.513, -12.5117 )
+
+[node name="slot0" type="TextureRect" parent="EquipementTab/items"]
+margin_right = 100.0
+margin_bottom = 100.0
+texture = ExtResource( 2 )
+
+[node name="slot0Button" type="Button" parent="EquipementTab/items/slot0"]
+margin_right = 98.0
+margin_bottom = 99.0
+flat = true
+
+[node name="slot1" type="TextureRect" parent="EquipementTab/items"]
+margin_left = 104.0
+margin_right = 204.0
+margin_bottom = 100.0
+texture = ExtResource( 2 )
+
+[node name="slot1Button" type="Button" parent="EquipementTab/items/slot1"]
+margin_right = 98.0
+margin_bottom = 99.0
+flat = true
+
+[node name="slot2" type="TextureRect" parent="EquipementTab/items"]
+margin_left = 208.0
+margin_right = 308.0
+margin_bottom = 100.0
+texture = ExtResource( 2 )
+
+[node name="slot2Button" type="Button" parent="EquipementTab/items/slot2"]
+margin_right = 98.0
+margin_bottom = 99.0
+flat = true
+
+[node name="slot3" type="TextureRect" parent="EquipementTab/items"]
+margin_left = 312.0
+margin_right = 412.0
+margin_bottom = 100.0
+texture = ExtResource( 2 )
+
+[node name="slot3Button" type="Button" parent="EquipementTab/items/slot3"]
+margin_right = 98.0
+margin_bottom = 99.0
+flat = true
+
+[node name="slot4" type="TextureRect" parent="EquipementTab/items"]
+margin_left = 416.0
+margin_right = 516.0
+margin_bottom = 100.0
+texture = ExtResource( 2 )
+
+[node name="slot4Button" type="Button" parent="EquipementTab/items/slot4"]
+margin_right = 98.0
+margin_bottom = 99.0
+flat = true
+
+[node name="scrollInventory" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="bg" type="TextureRect" parent="scrollInventory"]
+margin_left = 36.0
+margin_top = 24.0
+margin_right = 448.0
+margin_bottom = 565.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="scrollInventory"]
+margin_left = 58.0
+margin_top = 69.0
+margin_right = 428.0
+margin_bottom = 542.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="scrollInventory/ScrollContainer"]
+margin_right = 370.0
+margin_bottom = 473.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.94
+
+[node name="slot" type="TextureRect" parent="scrollInventory"]
+visible = false
+margin_left = 58.0
+margin_top = 75.7248
+margin_right = 428.0
+margin_bottom = 175.725
+texture = ExtResource( 2 )
+stretch_mode = 1
+
+[node name="image" type="TextureRect" parent="scrollInventory/slot"]
+margin_left = 11.0
+margin_top = 9.0
+margin_right = 94.0
+margin_bottom = 90.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="name" type="TextureRect" parent="scrollInventory/slot"]
+margin_left = 99.0
+margin_top = 11.0
+margin_right = 263.0
+margin_bottom = 27.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Label" type="Label" parent="scrollInventory/slot/name"]
+margin_left = 8.0
+margin_right = 156.0
+margin_bottom = 14.0
+text = "SAMPLE NAME"
+
+[node name="description" type="TextureRect" parent="scrollInventory/slot"]
+margin_left = 99.0
+margin_top = 31.0
+margin_right = 263.0
+margin_bottom = 87.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Label" type="Label" parent="scrollInventory/slot/description"]
+margin_left = 9.0
+margin_top = 3.0
+margin_right = 156.0
+margin_bottom = 53.0
+text = "SAMPLE DESCRIPTION,
+sample description."
+
+[node name="rarity" type="TextureRect" parent="scrollInventory/slot"]
+margin_left = 293.0
+margin_top = 11.0
+margin_right = 336.0
+margin_bottom = 38.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="quantity" type="TextureRect" parent="scrollInventory/slot"]
+margin_left = 284.0
+margin_top = 43.0
+margin_right = 344.0
+margin_bottom = 84.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Label" type="Label" parent="scrollInventory/slot/quantity"]
+margin_left = 4.0
+margin_top = 2.0
+margin_right = 56.0
+margin_bottom = 39.0
+text = "00"
+align = 1
+valign = 1
+
+[node name="button" type="TextureButton" parent="scrollInventory/slot"]
+margin_right = 370.0
+margin_bottom = 99.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="scrollInventory"]
+margin_left = 60.0
+margin_top = 45.0
+margin_right = 472.0
+margin_bottom = 145.0
+rect_scale = Vector2( 0.881347, 0.204317 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="ressourceTabButton" type="TextureButton" parent="scrollInventory/HBoxContainer"]
+margin_right = 100.0
+margin_bottom = 100.0
+texture_normal = ExtResource( 5 )
+
+[node name="questTabButton" type="TextureButton" parent="scrollInventory/HBoxContainer"]
+margin_left = 104.0
+margin_right = 204.0
+margin_bottom = 100.0
+texture_normal = ExtResource( 5 )
+
+[node name="weaponTabButton" type="TextureButton" parent="scrollInventory/HBoxContainer"]
+margin_left = 208.0
+margin_right = 308.0
+margin_bottom = 100.0
+texture_normal = ExtResource( 5 )
+
+[node name="allTabButton" type="TextureButton" parent="scrollInventory/HBoxContainer"]
+margin_left = 312.0
+margin_right = 412.0
+margin_bottom = 100.0
+texture_normal = ExtResource( 5 )

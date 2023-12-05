@@ -4,8 +4,13 @@ extends KinematicBody2D
 signal health_changed(amount)
 signal score_changed(amount)
 signal effect_changed(effect,amount)
+signal callInventory()
 # inventory
+onready var InventoryUI = $Camera2D/Inventory
 var inventory : Array = []
+var inventoryUniqueEntry: Array = []
+var inventoryCount: Array = []
+var inventoryComplete: Array = []
 # stats
 var health : int = 10
 var score: int = 0
@@ -71,7 +76,12 @@ func _physics_process(delta):
 		for enemy in get_tree().get_nodes_in_group("hostile"):
 			enemy.set_physics_process(false)
 	
+	if Input.is_action_just_pressed("open_inventory"):
+		InventoryUI.visible = !InventoryUI.visible
+		emit_signal("callInventory")
+	
 	if Input.is_action_pressed("toggle_pause"):
+		InventoryUI.visible = false
 		$Camera2D/pauseMenu.visible = true
 		set_physics_process(false)
 		for friend in get_tree().get_nodes_in_group("friendly"):
@@ -155,7 +165,7 @@ func knockbackFromWallHit(multiplier,direction):
 		true:
 			knockBackDirection=Vector2(5*multiplier,0)
 		_:
-			pass
+			return
 	position+=knockBackDirection
 func knockbackFromDamage(multiplier, direction):
 	match direction:
@@ -164,7 +174,7 @@ func knockbackFromDamage(multiplier, direction):
 		true:
 			knockBackDirection=Vector2(10*multiplier,0)
 		_:
-			pass
+			return
 	position+=knockBackDirection
 
 func _on_damagePlayer(amount, direction):
@@ -174,7 +184,19 @@ func _on_damagePlayer(amount, direction):
 
 func _on_itemPickup(ID):
 	inventory.append(ID)
-
+	for i in inventory:
+		if i in inventoryUniqueEntry:
+			pass
+		else:
+			inventoryUniqueEntry.append(i)
+	inventoryCount=[]
+	for a in inventoryUniqueEntry:
+		inventoryCount.append(inventory.count(a))
+	inventoryComplete=[]
+	for v in range(len(inventoryUniqueEntry)):
+		inventoryComplete.append([inventoryUniqueEntry[v],inventoryCount[v]])
+	
+	emit_signal("callInventory")
 func _on_applyEffect(type,duration,strenght):
 	match type:
 		"poison":
