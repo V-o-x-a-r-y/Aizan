@@ -13,9 +13,7 @@ func _on_level_changed(current_level_name: String, doorPos):
 		"backTomenu":
 			next_level_name = "main_menu"
 		"mainmenu":
-			next_level_name = "BasePlate"
-		"baseplate.A1":
-			next_level_name = "BaseplateRoom2"
+			next_level_name = "AC_0_0"
 		_:
 			return
 	

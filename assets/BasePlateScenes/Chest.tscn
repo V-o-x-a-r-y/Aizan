@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/BasePlateScenes/AbandonedCitySprites/barrels.png" type="Texture" id=1]
+[ext_resource path="res://assets/BasePlateScenes/UI_sprites/interactIcon.png" type="Texture" id=2]
+[ext_resource path="res://assets/BasePlateScenes/chestScript.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 61.131
+
+[node name="Chest" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="Area2D"]
+offset = Vector2( -327, -609 )
+texture = ExtResource( 1 )
+polygon = PoolVector2Array( 284.386, 576.289, 327.685, 541.237, 369.953, 580.412, 368.922, 664.949, 328.715, 676.289, 283.355, 661.856 )
+uv = PoolVector2Array( 284.386, 576.289, 327.685, 541.237, 369.953, 580.412, 368.922, 664.949, 328.715, 676.289, 283.355, 661.856 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="interactIcon" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0.305882, 0.933333, 1, 1 )
+position = Vector2( 0, -78 )
+scale = Vector2( 0.384713, 0.384713 )
+texture = ExtResource( 2 )

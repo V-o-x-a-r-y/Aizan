@@ -1,16 +1,37 @@
 extends KinematicBody2D
 
-#signals    please know that I'm really bad at using signals, as I've never done it before.
+#signals
 signal health_changed(amount)
 signal score_changed(amount)
 signal effect_changed(effect,amount)
 signal callInventory()
+signal callChestInventory()
+signal dialogueEnd()
+# dialogue
+onready var dialogueHUD = $Camera2D/dialogueHUD
+onready var dialogueText = $Camera2D/dialogueHUD/text
+var dialogueTimer : Timer
 # inventory
 onready var InventoryUI = $Camera2D/Inventory
 var inventory : Array = []
 var inventoryUniqueEntry: Array = []
 var inventoryCount: Array = []
 var inventoryComplete: Array = []
+# indirect inventory (chest and such)
+onready var chestInventoryUI = $Camera2D/chestInventory
+var chestContent : Array = []
+var chestID : String
+# injector
+var shotList : Array = ["heal","stamina","antidote"]
+var shot : String = "heal"
+var injector : String = "basicInjector"
+var injectorDelay : int = 2
+var injectorMaxQuantity : int = 3
+#items HUD
+var currentItem : String
+var currentSlot : int = 0
+var previousSlot : int = 4
+var nextSlot : int = 1
 # stats
 var health : int = 10
 var score: int = 0
@@ -24,16 +45,13 @@ var jumpForce : int = 400
 var gravity : int = 1000
 var runSpeed : int = 150
 var vel : Vector2 = Vector2()
-
 # those are for 'attack'
 var playerDirection : bool = 0
 var attackCooldownTimer
-
 # those three are for 'camera_down'
 onready var camera = get_node("Camera2D")
 onready var cameraInitPos = camera.position
 onready var lowCameraPos = cameraInitPos.y + 200
-
 # for effects
 var poisontimer
 var poisonremovetimer
@@ -45,15 +63,21 @@ func _ready():
 	# Initialize the attack cooldown timer
 	attackCooldownTimer = Timer.new()
 	attackCooldownTimer.one_shot = true
+	# poison timer
 	poisontimer = Timer.new()
 	poisontimer.one_shot = true
 	add_child(poisontimer)
+	
 	poisonremovetimer = Timer.new()
 	poisontimer.one_shot = true
 	add_child(poisonremovetimer)
 # warning-ignore:return_value_discarded
 	attackCooldownTimer.connect("timeout", self, "_on_attack_cooldown_timeout")
 	add_child(attackCooldownTimer)
+	# dialogue timer
+	dialogueTimer = Timer.new()
+	dialogueTimer.one_shot = true
+	add_child(dialogueTimer)
 	
 	#get all items in the scene 
 	for i in get_parent().get_parent().itemList:
@@ -64,6 +88,10 @@ func _ready():
 		get_parent().get_parent().get_node(i).connect("applyEffect",self,"_on_applyEffect")
 	for i in get_parent().get_parent().zoneList:
 		get_parent().get_parent().get_node(i).connect("removeEffect",self,"_on_removeEffect")
+	for i in get_parent().get_parent().chestList:
+		get_parent().get_parent().get_node(i).connect("chestOpen",self,"_on_chestOpen")
+	for i in get_parent().get_parent().NPCList:
+		get_parent().get_parent().get_node(i).connect("dialogueChanged",self,"_on_dialogueChanged")
 
 func _physics_process(delta):
 	if health<=0:
@@ -76,12 +104,22 @@ func _physics_process(delta):
 		for enemy in get_tree().get_nodes_in_group("hostile"):
 			enemy.set_physics_process(false)
 	
+	if Input.is_action_just_pressed("next_item"):
+		if currentSlot == 4: currentSlot=0
+		else: currentSlot+=1
+		if nextSlot == 4: nextSlot=0
+		else: nextSlot+=1
+		if previousSlot == 4: previousSlot=0
+		else: previousSlot+=1
+		changeHotbar()
+	
 	if Input.is_action_just_pressed("open_inventory"):
 		InventoryUI.visible = !InventoryUI.visible
 		emit_signal("callInventory")
 	
 	if Input.is_action_pressed("toggle_pause"):
 		InventoryUI.visible = false
+		chestInventoryUI.visible = false
 		$Camera2D/pauseMenu.visible = true
 		set_physics_process(false)
 		for friend in get_tree().get_nodes_in_group("friendly"):
@@ -137,6 +175,19 @@ func _physics_process(delta):
 		
 	else:
 		camera.position.y = cameraInitPos.y  # Reset camera position to initial y position
+	
+	if Input.is_action_just_pressed("use_item"):
+		if inventory.count(currentItem)>=1:
+			useItem(currentItem)
+	
+	if Input.is_action_just_pressed("use_injector"):
+		useInjector(shot)
+
+func changeHotbar():
+	$Camera2D/playerHUD/currentSlot/image.texture = get_node("Camera2D/Inventory/EquipementTab/items/slot"+str(currentSlot)).texture
+	$Camera2D/playerHUD/previousSlot/image.texture = get_node("Camera2D/Inventory/EquipementTab/items/slot"+str(previousSlot)).texture
+	$Camera2D/playerHUD/nextSlot/image.texture = get_node("Camera2D/Inventory/EquipementTab/items/slot"+str(nextSlot)).texture
+	currentItem = get_node("Camera2D/Inventory/EquipementTab/items/slot"+str(currentSlot)).item
 
 func _on_sword_hit_enter(body):
 	# if u hit an enemy:
@@ -150,6 +201,7 @@ func _on_sword_hit_enter(body):
 	# if u hit a wall:
 	elif body in get_tree().get_nodes_in_group("wall"):
 		knockbackFromWallHit(knockbackMultiplier,!playerDirection)
+
 func _on_attack_cooldown_timeout():
 	pass # nothin' to put here for now, could be useful later for HUD things or whatever.
 
@@ -167,6 +219,7 @@ func knockbackFromWallHit(multiplier,direction):
 		_:
 			return
 	position+=knockBackDirection
+
 func knockbackFromDamage(multiplier, direction):
 	match direction:
 		false:
@@ -197,6 +250,7 @@ func _on_itemPickup(ID):
 		inventoryComplete.append([inventoryUniqueEntry[v],inventoryCount[v]])
 	
 	emit_signal("callInventory")
+
 func _on_applyEffect(type,duration,strenght):
 	match type:
 		"poison":
@@ -216,6 +270,7 @@ func _on_applyEffect(type,duration,strenght):
 			pass
 		_:
 			return
+
 func _on_removeEffect(type):
 	match type:
 		"poison":
@@ -230,3 +285,31 @@ func _on_removeEffect(type):
 			pass
 		_:
 			return
+
+func useItem(itemToUse):
+	inventory.erase(itemToUse)
+	match itemToUse:
+		"item4":
+			print("used debug Item4") # it's a debug item that'll get deleted afterwards, so a print is fine I guess.
+
+func _on_chestOpen(content, ID):
+	$Camera2D/chestInventory.visible = true
+	chestContent = content
+	chestID = ID
+	emit_signal("callChestInventory")
+
+func useInjector(shot):
+	match shot:
+		"heal":
+			pass
+		"antidote":
+			pass
+		"stamina":
+			pass
+
+func _on_dialogueChanged(dialogue):
+	dialogueHUD.visible = true
+	dialogueText.bbcode_text = dialogue
+	dialogueTimer.start(3)
+	yield(dialogueTimer, "timeout")
+	emit_signal("dialogueEnd")

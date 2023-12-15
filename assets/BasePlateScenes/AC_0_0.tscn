@@ -1,0 +1,167 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/BasePlateScenes/levelChanger.gd" type="Script" id=1]
+[ext_resource path="res://assets/BasePlateScenes/AbandonedCitySprites/tiles/road0.png" type="Texture" id=2]
+[ext_resource path="res://assets/BasePlateScenes/AbandonedCitySprites/tiles/road1.png" type="Texture" id=3]
+[ext_resource path="res://assets/BasePlateScenes/AbandonedCitySprites/tiles/grid1.png" type="Texture" id=4]
+[ext_resource path="res://assets/BasePlateScenes/AbandonedCitySprites/tiles/grid0_L.png" type="Texture" id=5]
+[ext_resource path="res://assets/BasePlateScenes/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/BasePlateScenes/AbandonedCitySprites/largeDebris0.png" type="Texture" id=7]
+[ext_resource path="res://assets/BasePlateScenes/AbandonedCitySprites/bgSky.png" type="Texture" id=8]
+[ext_resource path="res://assets/BasePlateScenes/AbandonedCitySprites/bgSkyscrappers.png" type="Texture" id=9]
+[ext_resource path="res://assets/BasePlateScenes/AbandonedCitySprites/barrels.png" type="Texture" id=10]
+[ext_resource path="res://assets/BasePlateScenes/AbandonedCitySprites/signs.png" type="Texture" id=11]
+[ext_resource path="res://assets/BasePlateScenes/Chest.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/BasePlateScenes/NPC.tscn" type="PackedScene" id=13]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1316, 26 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8.875, 129 )
+
+[node name="AC_0_0" type="Node2D"]
+script = ExtResource( 1 )
+chestList = [ "Interactables/Chest" ]
+NPCList = [ "Interactables/NPC" ]
+
+[node name="BackGroundTextures" type="Node2D" parent="."]
+
+[node name="BgSky" type="Sprite" parent="BackGroundTextures"]
+position = Vector2( 960, -448 )
+texture = ExtResource( 8 )
+
+[node name="BgSky2" type="Sprite" parent="BackGroundTextures"]
+position = Vector2( 3008, -448 )
+texture = ExtResource( 8 )
+
+[node name="BgSkyscrappers" type="Sprite" parent="BackGroundTextures"]
+position = Vector2( -1108, -951 )
+texture = ExtResource( 9 )
+offset = Vector2( 2049, 553 )
+
+[node name="BgSkyscrappers2" type="Sprite" parent="BackGroundTextures"]
+position = Vector2( 816, -987 )
+texture = ExtResource( 9 )
+offset = Vector2( 2049, 553 )
+
+[node name="LargeDebris0" type="Sprite" parent="."]
+position = Vector2( 1661, -390 )
+texture = ExtResource( 7 )
+
+[node name="underPlayerTextures" type="Node2D" parent="."]
+
+[node name="Road0" type="Sprite" parent="underPlayerTextures"]
+position = Vector2( 512, 192 )
+texture = ExtResource( 2 )
+
+[node name="barrel2" type="Polygon2D" parent="underPlayerTextures"]
+position = Vector2( 767, 156 )
+rotation = 1.52898
+offset = Vector2( -412.319, -616.417 )
+texture = ExtResource( 10 )
+polygon = PoolVector2Array( 377.819, 658.917, 387.819, 671.917, 412.819, 675.917, 432.819, 670.917, 448.819, 658.917, 452.819, 625.917, 450.819, 582.917, 427.819, 556.917, 401.819, 556.917, 378.819, 572.917, 371.819, 618.917 )
+uv = PoolVector2Array( 203.854, 653, 213.854, 666, 238.854, 670, 258.854, 665, 274.854, 653, 278.854, 620, 276.854, 577, 253.854, 551, 227.854, 551, 204.854, 567, 197.854, 613 )
+
+[node name="barrel" type="Polygon2D" parent="underPlayerTextures"]
+position = Vector2( 593, -471 )
+texture = ExtResource( 10 )
+polygon = PoolVector2Array( 203.854, 653, 213.854, 666, 238.854, 670, 258.854, 665, 274.854, 653, 278.854, 620, 276.854, 577, 253.854, 551, 227.854, 551, 204.854, 567, 197.854, 613 )
+uv = PoolVector2Array( 203.854, 653, 213.854, 666, 238.854, 670, 258.854, 665, 274.854, 653, 278.854, 620, 276.854, 577, 253.854, 551, 227.854, 551, 204.854, 567, 197.854, 613 )
+
+[node name="Grid0L" type="Sprite" parent="underPlayerTextures"]
+position = Vector2( 520, 184 )
+texture = ExtResource( 5 )
+
+[node name="Road1" type="Sprite" parent="underPlayerTextures"]
+position = Vector2( 936, 192 )
+texture = ExtResource( 3 )
+
+[node name="Road2" type="Sprite" parent="underPlayerTextures"]
+position = Vector2( 1360, 192 )
+texture = ExtResource( 3 )
+
+[node name="Road3" type="Sprite" parent="underPlayerTextures"]
+position = Vector2( 1784, 192 )
+texture = ExtResource( 2 )
+
+[node name="pole" type="Polygon2D" parent="underPlayerTextures"]
+position = Vector2( 2108, 110 )
+rotation = -0.0367363
+scale = Vector2( 0.521784, 0.521363 )
+offset = Vector2( -212.099, -1022.54 )
+texture = ExtResource( 11 )
+polygon = PoolVector2Array( 182.743, 1224.53, 237.46, 1224.53, 241.234, 866.038, 186.517, 866.038 )
+uv = PoolVector2Array( 182.743, 1224.53, 237.46, 1224.53, 241.234, 866.038, 186.517, 866.038 )
+
+[node name="sign" type="Polygon2D" parent="underPlayerTextures"]
+position = Vector2( 2109, 63 )
+rotation = -0.0367363
+scale = Vector2( 0.548608, 0.548166 )
+offset = Vector2( -85.8347, -236.364 )
+texture = ExtResource( 11 )
+polygon = PoolVector2Array( 41.2667, 287.879, 135.206, 290.909, 133.186, 181.818, 36.4633, 182.737 )
+uv = PoolVector2Array( 41.2115, 290.805, 127.418, 288.506, 145.809, 188.506, 32.8584, 180.672 )
+
+[node name="Road4" type="Sprite" parent="underPlayerTextures"]
+position = Vector2( 2208, 192 )
+texture = ExtResource( 3 )
+
+[node name="Road5" type="Sprite" parent="underPlayerTextures"]
+position = Vector2( 2632, 192 )
+texture = ExtResource( 3 )
+
+[node name="Interactables" type="Node2D" parent="."]
+
+[node name="NPC" parent="Interactables" instance=ExtResource( 13 )]
+position = Vector2( 1514, 112 )
+scale = Vector2( 0.172936, 0.172936 )
+dialogueID = "debugDialogue1"
+
+[node name="Chest" parent="Interactables" instance=ExtResource( 12 )]
+position = Vector2( 1892, 249 )
+content = [ [ "item4", 2 ], [ "item3", 1 ] ]
+ID = "debugchest"
+
+[node name="Player" parent="." instance=ExtResource( 6 )]
+position = Vector2( 884, 262 )
+scale = Vector2( 2, 2 )
+
+[node name="Camera2D" parent="Player/KinematicBody2D" index="3"]
+position = Vector2( 0, -42 )
+zoom = Vector2( 1, 1 )
+
+[node name="playerHUD" parent="Player/KinematicBody2D/Camera2D" index="0"]
+margin_left = -250.0
+margin_top = -140.0
+margin_right = -250.0
+margin_bottom = -140.0
+rect_scale = Vector2( 0.398384, 0.398384 )
+
+[node name="dialogueHUD" parent="Player/KinematicBody2D/Camera2D" index="8"]
+margin_left = -164.0
+margin_top = 106.0
+margin_right = -164.0
+margin_bottom = 106.0
+
+[node name="OverPlayerTextures" type="Node2D" parent="."]
+
+[node name="Grid1" type="Sprite" parent="OverPlayerTextures"]
+position = Vector2( 2288, 176 )
+texture = ExtResource( 4 )
+
+[node name="Collisions" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions"]
+position = Vector2( 1564, 342 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions"]
+position = Vector2( 726, 191 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisions"]
+position = Vector2( 2494, 189 )
+shape = SubResource( 2 )
+
+[editable path="Player"]
