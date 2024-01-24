@@ -1,11 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/BasePlateScenes/NPCsprites/roland.png" type="Texture" id=1]
 [ext_resource path="res://NPCScript.gd" type="Script" id=2]
 [ext_resource path="res://assets/BasePlateScenes/UI_sprites/interactIcon.png" type="Texture" id=3]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 182, 569.5 )
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 680.8
@@ -13,13 +10,9 @@ radius = 680.8
 [node name="NPC" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+[node name="Polygons" type="Node2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
-position = Vector2( 241, 619.5 )
-shape = SubResource( 1 )
-
-[node name="Polygon2D" type="Polygon2D" parent="KinematicBody2D"]
+[node name="Polygon2D" type="Polygon2D" parent="Polygons"]
 texture = ExtResource( 1 )
 polygon = PoolVector2Array( 45.283, 1226.42, 383.019, 1226.42, 532.076, 750.943, 483.019, 286.792, 364.151, 18.8679, 137.736, 18.8679, 18.8679, 279.245, 11.3208, 741.509 )
 uv = PoolVector2Array( 45.283, 1226.42, 383.019, 1226.42, 532.076, 750.943, 483.019, 286.792, 364.151, 18.8679, 137.736, 18.8679, 18.8679, 279.245, 11.3208, 741.509 )

@@ -58,6 +58,7 @@ onready var playerInventory = playerScript.inventoryComplete
 var typeFromSignal
 var modSlot
 var itemSlot
+
 func _ready():
 	$EquipementTab.connect("weaponChange",self,"_on_weaponChange")
 	$EquipementTab.connect("modChange",self,"_on_modChange")

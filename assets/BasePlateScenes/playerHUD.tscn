@@ -77,3 +77,46 @@ expand = true
 [node name="image" type="TextureRect" parent="nextSlot"]
 margin_right = 40.0
 margin_bottom = 40.0
+
+[node name="injectorShots" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="shot0" type="TextureRect" parent="injectorShots"]
+margin_left = 34.0
+margin_top = 681.0
+margin_right = 74.0
+margin_bottom = 691.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="image" type="TextureRect" parent="injectorShots/shot0"]
+margin_right = 40.0
+margin_bottom = 40.0
+expand = true
+
+[node name="shot1" type="TextureRect" parent="injectorShots"]
+margin_left = 98.0
+margin_top = 681.0
+margin_right = 138.0
+margin_bottom = 691.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="image" type="TextureRect" parent="injectorShots/shot1"]
+margin_right = 40.0
+margin_bottom = 40.0
+expand = true
+
+[node name="shot2" type="TextureRect" parent="injectorShots"]
+margin_left = 165.0
+margin_top = 681.0
+margin_right = 205.0
+margin_bottom = 691.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="image" type="TextureRect" parent="injectorShots/shot2"]
+margin_right = 40.0
+margin_bottom = 40.0
+expand = true

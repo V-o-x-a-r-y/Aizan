@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+
+onready var animation_tree = $AnimationTree
 #signals
 signal health_changed(amount)
 signal score_changed(amount)
@@ -7,6 +9,7 @@ signal effect_changed(effect,amount)
 signal callInventory()
 signal callChestInventory()
 signal dialogueEnd()
+signal shotListChanged(shotList, shot)
 # dialogue
 onready var dialogueHUD = $Camera2D/dialogueHUD
 onready var dialogueText = $Camera2D/dialogueHUD/text
@@ -22,11 +25,14 @@ onready var chestInventoryUI = $Camera2D/chestInventory
 var chestContent : Array = []
 var chestID : String
 # injector
-var shotList : Array = ["heal","stamina","antidote"]
+var shotList : Array = ["heal","heal","heal","stamina","stamina","stamina","antidote","antidote","antidote"]
 var shot : String = "heal"
 var injector : String = "basicInjector"
 var injectorDelay : int = 2
-var injectorMaxQuantity : int = 3
+
+var healShotStrenght : int = 3
+var staminaShotStrenght : int = 3
+var antidoteShotStrenght : int = 3
 #items HUD
 var currentItem : String
 var currentSlot : int = 0
@@ -34,16 +40,17 @@ var previousSlot : int = 4
 var nextSlot : int = 1
 # stats
 var health : int = 10
+var stamina : int = 10
 var score: int = 0
 var attackCooldown : int = 0.1
 var attackDamage : int = 1
 var knockbackMultiplier : int = 1
 var poisonResistance : int = 0
 # those are for 'Movement'
-var speed : int = 100
+var speed : int = 200           # walk speed
 var jumpForce : int = 400
 var gravity : int = 1000
-var runSpeed : int = 150
+var runSpeed : int = 250
 var vel : Vector2 = Vector2()
 # those are for 'attack'
 var playerDirection : bool = 0
@@ -94,6 +101,9 @@ func _ready():
 		get_parent().get_parent().get_node(i).connect("dialogueChanged",self,"_on_dialogueChanged")
 
 func _physics_process(delta):
+	if vel == Vector2(0,vel.y):
+		animation_tree.get("parameters/playback").travel("idle")
+	
 	if health<=0:
 		$Camera2D/pauseMenu.visible = false
 		$Camera2D/playerHUD.visible = false
@@ -105,6 +115,7 @@ func _physics_process(delta):
 			enemy.set_physics_process(false)
 	
 	if Input.is_action_just_pressed("next_item"):
+		print(vel)
 		if currentSlot == 4: currentSlot=0
 		else: currentSlot+=1
 		if nextSlot == 4: nextSlot=0
@@ -129,17 +140,29 @@ func _physics_process(delta):
 	vel.x = 0
 	# Movement
 	if Input.is_action_pressed("move_left"):
-		playerDirection = 0
 		if Input.is_action_pressed("run"):
 			vel.x -= runSpeed
-		else:
+		else: #just walking
 			vel.x -= speed
+			animation_tree.get("parameters/playback").travel("walk")
+			if playerDirection==true:
+				$Polygons.scale.x = 1
+				$Skeleton2D.scale.x = 1
+				$Hitbox.scale.x = 1
+		playerDirection = 0
 	if Input.is_action_pressed("move_right"):
-		playerDirection = 1
+		
 		if Input.is_action_pressed("run"):
 			vel.x += runSpeed
-		else:
+		else: #walking
 			vel.x += speed
+			animation_tree.get("parameters/playback").travel("walk")
+			if playerDirection==false:
+				$Polygons.scale.x = -1
+				$Skeleton2D.scale.x = -1
+				$Hitbox.scale.x = -1
+		
+		playerDirection = 1
 	# Velocity
 	vel = move_and_slide(vel, Vector2.UP)
 	# Gravity
@@ -149,6 +172,12 @@ func _physics_process(delta):
 		vel.y -= jumpForce
 	#attack1
 	if Input.is_action_just_pressed("attack") and attackCooldownTimer.time_left <= 0:
+		print("attack1, stamina before:",stamina)
+		animation_tree.get("parameters/playback").travel("attack1")
+		stamina -= 3
+		
+		""" # old attack system, might delete later (I should, but could still be of use for now idk prbbly not)
+		
 		var sword_hit = preload("res://assets//baseplatescenes//greatsword_attack1.tscn").instance()
 		match playerDirection: # this is a switch to check the player direction and spawn the attack hitbox correctly.
 			false:
@@ -168,6 +197,7 @@ func _physics_process(delta):
 		sword_hit.get_node("Area2D").connect("body_entered", self, "_on_sword_hit_enter")
 		
 		attackCooldownTimer.start(attackCooldown)
+		"""
 	
 	#camera_down
 	if Input.is_action_pressed("camera_down") and is_on_floor():
@@ -180,8 +210,19 @@ func _physics_process(delta):
 		if inventory.count(currentItem)>=1:
 			useItem(currentItem)
 	
+	if Input.is_action_just_pressed("next_shot"):
+		match shot:
+			"heal":
+				shot = "stamina"
+			"stamina":
+				shot = "antidote"
+			"antidote":
+				shot = "heal"
+		emit_signal("shotListChanged",shotList, shot)
+	
 	if Input.is_action_just_pressed("use_injector"):
-		useInjector(shot)
+		if shotList.count(shot)>=1:
+			useInjector(shot)
 
 func changeHotbar():
 	$Camera2D/playerHUD/currentSlot/image.texture = get_node("Camera2D/Inventory/EquipementTab/items/slot"+str(currentSlot)).texture
@@ -301,15 +342,24 @@ func _on_chestOpen(content, ID):
 func useInjector(shot):
 	match shot:
 		"heal":
-			pass
+			shotList.erase(shot)
+			health+=healShotStrenght
+			if health > 10:
+				health=10
+			emit_signal("health_changed", health)
 		"antidote":
 			pass
 		"stamina":
 			pass
+	emit_signal("shotListChanged",shotList, shot)
 
-func _on_dialogueChanged(dialogue):
+func _on_dialogueChanged(dialogue, isLast):
 	dialogueHUD.visible = true
 	dialogueText.bbcode_text = dialogue
 	dialogueTimer.start(3)
 	yield(dialogueTimer, "timeout")
-	emit_signal("dialogueEnd")
+	if not isLast:
+		emit_signal("dialogueEnd")
+	elif isLast:
+		dialogueHUD.visible = false
+		dialogueText.bbcode_text = ""
