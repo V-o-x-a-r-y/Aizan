@@ -4,6 +4,7 @@ extends KinematicBody2D
 onready var animation_tree = $AnimationTree
 #signals
 signal health_changed(amount)
+signal stamina_changed(amount)
 signal score_changed(amount)
 signal effect_changed(effect,amount)
 signal callInventory()
@@ -39,6 +40,8 @@ var currentSlot : int = 0
 var previousSlot : int = 4
 var nextSlot : int = 1
 # stats
+var maxhealth : int = 10
+var maxstamina : int = 10
 var health : int = 10
 var stamina : int = 10
 var score: int = 0
@@ -47,14 +50,17 @@ var attackDamage : int = 1
 var knockbackMultiplier : int = 1
 var poisonResistance : int = 0
 # those are for 'Movement'
-var speed : int = 200           # walk speed
+var speed : int = 200        # base walk speed
 var jumpForce : int = 400
 var gravity : int = 1000
 var runSpeed : int = 250
 var vel : Vector2 = Vector2()
 # those are for 'attack'
 var playerDirection : bool = 0
-var attackCooldownTimer
+var attackCooldownTimer: Timer
+# stamina
+var staminatimer: Timer
+var staminarechargetimer: Timer
 # those three are for 'camera_down'
 onready var camera = get_node("Camera2D")
 onready var cameraInitPos = camera.position
@@ -70,17 +76,27 @@ func _ready():
 	# Initialize the attack cooldown timer
 	attackCooldownTimer = Timer.new()
 	attackCooldownTimer.one_shot = true
+# warning-ignore:return_value_discarded
+	attackCooldownTimer.connect("timeout", self, "_on_attack_cooldown_timeout")
+	add_child(attackCooldownTimer)
 	# poison timer
 	poisontimer = Timer.new()
 	poisontimer.one_shot = true
 	add_child(poisontimer)
 	
 	poisonremovetimer = Timer.new()
-	poisontimer.one_shot = true
+	poisontimer.one_shot = true # this should've been poisonremovetimer but somehow, it just works.
 	add_child(poisonremovetimer)
-# warning-ignore:return_value_discarded
-	attackCooldownTimer.connect("timeout", self, "_on_attack_cooldown_timeout")
-	add_child(attackCooldownTimer)
+	# stamina timer
+	staminatimer = Timer.new()
+	staminatimer.one_shot = true
+	staminatimer.connect("timeout", self, "_on_staminaconnect")
+	add_child(staminatimer)
+	
+	staminarechargetimer = Timer.new()
+	staminarechargetimer.one_shot = true # this should've been poisonremovetimer but somehow, it just works.
+	add_child(staminarechargetimer)
+
 	# dialogue timer
 	dialogueTimer = Timer.new()
 	dialogueTimer.one_shot = true
@@ -101,7 +117,7 @@ func _ready():
 		get_parent().get_parent().get_node(i).connect("dialogueChanged",self,"_on_dialogueChanged")
 
 func _physics_process(delta):
-	if vel == Vector2(0,vel.y):
+	if vel == Vector2(0,vel.y): # check if player moving, if not then start idle anim
 		animation_tree.get("parameters/playback").travel("idle")
 	
 	if health<=0:
@@ -115,7 +131,6 @@ func _physics_process(delta):
 			enemy.set_physics_process(false)
 	
 	if Input.is_action_just_pressed("next_item"):
-		print(vel)
 		if currentSlot == 4: currentSlot=0
 		else: currentSlot+=1
 		if nextSlot == 4: nextSlot=0
@@ -171,10 +186,12 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		vel.y -= jumpForce
 	#attack1
-	if Input.is_action_just_pressed("attack") and attackCooldownTimer.time_left <= 0:
-		print("attack1, stamina before:",stamina)
+	if Input.is_action_just_pressed("attack") and attackCooldownTimer.time_left <= 0 and stamina>=3:
 		animation_tree.get("parameters/playback").travel("attack1")
 		stamina -= 3
+		emit_signal("stamina_changed",stamina)
+		# used to make stamina go back up after unactivity
+		staminatimer.start(1.5)
 		
 		""" # old attack system, might delete later (I should, but could still be of use for now idk prbbly not)
 		
@@ -223,6 +240,20 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("use_injector"):
 		if shotList.count(shot)>=1:
 			useInjector(shot)
+func _on_staminaconnect():
+	_on_staminarecharge(stamina)
+
+func _on_staminarecharge(amount):
+	if staminatimer.time_left<=0:
+		for i in range(maxstamina-amount):
+			if amount>=maxstamina:
+				stamina=10
+				break
+			stamina+=1
+			emit_signal("stamina_changed", stamina)
+			staminarechargetimer.start(0.5)
+			yield(staminarechargetimer, "timeout")
+	
 
 func changeHotbar():
 	$Camera2D/playerHUD/currentSlot/image.texture = get_node("Camera2D/Inventory/EquipementTab/items/slot"+str(currentSlot)).texture

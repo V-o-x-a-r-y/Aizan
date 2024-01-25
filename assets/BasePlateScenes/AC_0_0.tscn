@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/BasePlateScenes/levelChanger.gd" type="Script" id=1]
 [ext_resource path="res://assets/BasePlateScenes/AbandonedCitySprites/tiles/road0.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://assets/BasePlateScenes/AbandonedCitySprites/signs.png" type="Texture" id=11]
 [ext_resource path="res://assets/BasePlateScenes/Chest.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/BasePlateScenes/NPC.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/BasePlateScenes/enemy1.tscn" type="PackedScene" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1316, 26 )
@@ -22,6 +23,7 @@ extents = Vector2( 8.875, 129 )
 
 [node name="AC_0_0" type="Node2D"]
 script = ExtResource( 1 )
+enemyList = [ "Enemy" ]
 chestList = [ "Interactables/Chest" ]
 NPCList = [ "Interactables/NPC" ]
 
@@ -122,6 +124,10 @@ dialogueID = "debugDialogue1"
 position = Vector2( 1892, 249 )
 content = [ [ "item4", 2 ], [ "item3", 1 ] ]
 ID = "debugchest"
+
+[node name="Enemy" parent="." instance=ExtResource( 14 )]
+position = Vector2( 1336, 257 )
+scale = Vector2( 1.35269, 1.35269 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
 position = Vector2( 970, 284 )
