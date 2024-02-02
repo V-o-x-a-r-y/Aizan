@@ -19,3 +19,5 @@ Make sure you have the following installed:
 
    ```bash
    git clone https://github.com/VoxaryAizan/Aizan.git
+   cd Aizan
+   ```
