@@ -1,12 +1,8 @@
 # Aizan
 
-![Aizan Logo](link-to-your-logo-image)
+![Aizan Logo](https://github.com/VoxaryAizan/Aizan/logo1.png)
 
 Aizan is an exciting metroidmania game developed using Godot Engine. This game blends exploration, action, and platforming, offering a captivating gaming experience. Embark on a thrilling adventure through intricate levels, uncover secrets, defeat enemies, and upgrade your character.
-
-## Demo
-
-Check out the game in action on our [demo page](https://voxaryaizan.github.io/Aizan/).
 
 ## Getting Started
 
