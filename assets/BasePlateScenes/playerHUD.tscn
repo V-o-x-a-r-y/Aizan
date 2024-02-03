@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/BasePlateScenes/playerHUD.gd" type="Script" id=1]
 [ext_resource path="res://assets/BasePlateScenes/UI_sprites/lifebar.png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://assets/BasePlateScenes/UI_sprites/healthbar.png" type="Texture" id=6]
 [ext_resource path="res://assets/BasePlateScenes/UI_sprites/staminabar.png" type="Texture" id=7]
 [ext_resource path="res://assets/BasePlateScenes/UI_sprites/manabar.png" type="Texture" id=8]
+[ext_resource path="res://assets/BasePlateScenes/UI_sprites/UI_itemSlot0.png" type="Texture" id=9]
+[ext_resource path="res://assets/BasePlateScenes/UI_sprites/UI_debugItem.png" type="Texture" id=10]
 
 [node name="playerHUD" type="Control"]
 anchor_right = 1.0
@@ -39,8 +41,8 @@ value = 10.0
 texture_progress = ExtResource( 7 )
 fill_mode = 5
 tint_progress = Color( 0.788235, 0.972549, 0.752941, 1 )
-radial_initial_angle = 148.6
-radial_fill_degrees = 145.4
+radial_initial_angle = 155.2
+radial_fill_degrees = 119.0
 
 [node name="mana" type="TextureProgress" parent="barsOverlay"]
 show_behind_parent = true
@@ -50,6 +52,17 @@ max_value = 10.0
 value = 10.0
 texture_progress = ExtResource( 8 )
 fill_mode = 5
+
+[node name="itemSlot0" type="TextureRect" parent="."]
+margin_top = 88.0
+margin_right = 131.0
+margin_bottom = 219.0
+texture = ExtResource( 9 )
+
+[node name="selectedItem0" type="TextureRect" parent="itemSlot0"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 10 )
 
 [node name="PlayerScore" type="Label" parent="."]
 margin_left = 1212.0
