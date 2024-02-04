@@ -110,10 +110,10 @@ if __name__ == "__main__":
         sys.exit(1)
 
     db = mysql.connector.connect(
-        host="mysql-aizan.alwaysdata.net",
-        user="aizan_save",
-        password="AizanSavePasswoed",
-        database="aizan_save"
+        host="YOUR HOST",
+        user="YOUR  USER",
+        password=" YOUR PASSWORD",
+        database="YOUR DATABASE"
     )
     cursor = db.cursor()
 
