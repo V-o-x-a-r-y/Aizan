@@ -8,33 +8,24 @@
 - Création d'un site internet [Aizan.Space](https://aizan.space).
 
 ### Save Script File
-#### Version 1.0.0 (Avant Chiffrement des Identifiants)
 
-Code fonctionnel gérant la sauvegarde et la récupération de données depuis une base de données MySQL.
-Utilise un fichier "saveID.txt" pour stocker un identifiant unique généré aléatoirement.
+#### Version 1.0 : Code initial
 
-#### Version 1.1.0 (Chiffrement des Identifiants)
+Script de base pour enregistrer et récupérer des données JSON cryptées à l'aide de MySQL.
+Implémente un système de génération d'identifiants simple.
+Fournit une fonctionnalité pour vérifier si l’ID existe dans la base de données.
+Utilise le cryptage Fernet pour sécuriser les données.
 
-Ajout du chiffrement des identifiants de base de données pour renforcer la sécurité.
-Les identifiants (host, user, password, database) sont maintenant stockés dans un fichier chiffré "encrypted_creds.txt".
-Utilisation de la bibliothèque Fernet pour le chiffrement et le déchiffrement des données sensibles.
+#### Version 1.1 : optimisation du code et corrections de bugs
 
-#### Version 1.1.1 (Modifications Mineures)
+Amélioration de la fonction check_save_id_file pour éliminer la redondance du code.
+Amélioration de la fonction generate_save_id pour une meilleure lisibilité.
+Correction d'un bug dans la fonction save_data où la vérification de l'identité était dupliquée.
+Légères améliorations apportées à la structure du code pour une meilleure organisation.
 
-Correction de quelques commentaires et mise en forme du code pour améliorer la lisibilité.
+#### Version 1.2 : amélioration de l'interface de ligne de commande
 
-####  Version 1.2.0 (Fonctionnalité Améliorée)
-
-Ajout d'une fonction load_credentials() pour charger les identifiants depuis le fichier chiffré.
-Amélioration de la fonction establish_database_connection() pour prendre en charge les identifiants chiffrés.
-
-#### Version 1.2.1 (Correction de Bugs)
-
-Correction d'un bug lié à la gestion des fichiers binaires lors de la lecture des identifiants chiffrés.
-
-#### Version 1.3.0 (Sauvegarde Chiffrée)
-
-Ajout du chiffrement des données avant de les stocker dans la base de données.
-Les données sont chiffrées avec une clé générée aléatoirement pour chaque sauvegarde.
-Amélioration de la sécurité globale du système.
-Cela devrait vous donner une idée des modifications apportées à chaque version du code. N'oubliez pas d'ajuster les numéros de version en fonction de votre processus de gestion de versions spécifique.
+Modification de l'interface de ligne de commande pour fournir des instructions plus claires sur la façon d'utiliser le script.
+Ajout de la gestion des erreurs en cas d'utilisation incorrecte de la ligne de commande.
+Mise à jour du code pour utiliser plus efficacement les arguments de ligne de commande.
+Introduction d'une sortie plus informative pour l'utilisateur lors de l'exécution du script.
