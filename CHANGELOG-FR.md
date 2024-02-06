@@ -7,7 +7,7 @@
 - Ajout d'un logiciel de mis à jours. (Isaac)
 - Création d'un site internet [Aizan.Space](https://aizan.space).
 
-### Save File
+### Save Script File
 #### Version 1.0.0 (Avant Chiffrement des Identifiants)
 
 Code fonctionnel gérant la sauvegarde et la récupération de données depuis une base de données MySQL.
