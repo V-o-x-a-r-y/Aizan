@@ -6,18 +6,4 @@ Aizan is an exciting metroidmania game developed using Godot Engine. This game b
 
 ## Getting Started
 
-### Prerequisites
-
-Make sure you have the following installed:
-
-- [Godot Engine](https://godotengine.org/) - Version X.X.X
-- [Git](https://git-scm.com/)
-
-### Installation
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/VoxaryAizan/Aizan.git
-   cd Aizan
-   ```
+Go on the [wiki](https://github.com/V-o-x-a-r-y/Aizan/wiki)
