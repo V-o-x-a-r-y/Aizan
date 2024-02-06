@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://assets/BasePlateScenes/levelChanger.gd" type="Script" id=1]
 [ext_resource path="res://assets/BasePlateScenes/AbandonedCitySprites/tiles/road0.png" type="Texture" id=2]
@@ -14,9 +14,23 @@
 [ext_resource path="res://assets/BasePlateScenes/Chest.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/BasePlateScenes/NPC.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/BasePlateScenes/enemy1.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/BasePlateScenes/AbandonedCitySprites/plants.png" type="Texture" id=15]
+[ext_resource path="res://assets/BasePlateScenes/AbandonedCitySprites/trash.png" type="Texture" id=16]
+[ext_resource path="res://assets/BasePlateScenes/Decals&Particles/blood1.png" type="Texture" id=17]
+[ext_resource path="res://assets/BasePlateScenes/FoundrySprites/plates.png" type="Texture" id=18]
+[ext_resource path="res://assets/BasePlateScenes/FoundrySprites/tiles/sideCover1.png" type="Texture" id=19]
+[ext_resource path="res://assets/BasePlateScenes/AbandonedCitySprites/debris.png" type="Texture" id=20]
+[ext_resource path="res://assets/BasePlateScenes/miscSprites/tiles/dirtPath1.png" type="Texture" id=22]
+[ext_resource path="res://assets/BasePlateScenes/AbandonedCitySprites/car0_blood.png" type="Texture" id=23]
+[ext_resource path="res://assets/BasePlateScenes/FoundrySprites/Excavator.png" type="Texture" id=24]
+[ext_resource path="res://assets/BasePlateScenes/FoundrySprites/debris.png" type="Texture" id=25]
+[ext_resource path="res://assets/BasePlateScenes/FoundrySprites/tiles/metal1.png" type="Texture" id=26]
+[ext_resource path="res://assets/BasePlateScenes/AbandonedCitySprites/caches.png" type="Texture" id=27]
+[ext_resource path="res://assets/BasePlateScenes/FoundrySprites/brokenPlates.png" type="Texture" id=28]
+[ext_resource path="res://assets/BasePlateScenes/miscSprites/samurai.png" type="Texture" id=30]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 1316, 26 )
+extents = Vector2( 3438.5, 26 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8.875, 129 )
@@ -52,6 +66,10 @@ position = Vector2( 1661, -390 )
 texture = ExtResource( 7 )
 
 [node name="underPlayerTextures" type="Node2D" parent="."]
+
+[node name="Road8" type="Sprite" parent="underPlayerTextures"]
+position = Vector2( 84, 192 )
+texture = ExtResource( 2 )
 
 [node name="Road0" type="Sprite" parent="underPlayerTextures"]
 position = Vector2( 512, 192 )
@@ -106,12 +124,905 @@ polygon = PoolVector2Array( 41.2667, 287.879, 135.206, 290.909, 133.186, 181.818
 uv = PoolVector2Array( 41.2115, 290.805, 127.418, 288.506, 145.809, 188.506, 32.8584, 180.672 )
 
 [node name="Road4" type="Sprite" parent="underPlayerTextures"]
-position = Vector2( 2208, 192 )
+position = Vector2( 2631, 694 )
 texture = ExtResource( 3 )
+offset = Vector2( -423, -502 )
 
 [node name="Road5" type="Sprite" parent="underPlayerTextures"]
-position = Vector2( 2632, 192 )
+position = Vector2( 2631, 694 )
 texture = ExtResource( 3 )
+offset = Vector2( 1, -502 )
+
+[node name="Road6" type="Sprite" parent="underPlayerTextures"]
+position = Vector2( 3483, 693 )
+texture = ExtResource( 3 )
+offset = Vector2( -423, -502 )
+
+[node name="Road7" type="Sprite" parent="underPlayerTextures"]
+position = Vector2( 3483, 693 )
+texture = ExtResource( 3 )
+offset = Vector2( 1, -502 )
+
+[node name="debris" type="Node2D" parent="underPlayerTextures"]
+position = Vector2( 1845, 212 )
+
+[node name="Blood1" type="Sprite" parent="underPlayerTextures/debris"]
+position = Vector2( 602, -75 )
+texture = ExtResource( 17 )
+
+[node name="Polygon2D" type="Polygon2D" parent="underPlayerTextures/debris"]
+texture = ExtResource( 20 )
+polygon = PoolVector2Array( 51.597, 46.1916, 52.0884, 79.3612, 85.5037, 81.3268, 115.725, 55.0368, 115.725, 26.5356, 80.344, 15.7248 )
+uv = PoolVector2Array( 51.597, 46.1916, 52.0884, 79.3612, 85.5037, 81.3268, 115.725, 55.0368, 115.725, 26.5356, 80.344, 15.7248 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="underPlayerTextures/debris"]
+position = Vector2( -146, -27 )
+texture = ExtResource( 20 )
+polygon = PoolVector2Array( 147.666, 90.4177, 142.015, 100, 140.541, 112.776, 152.826, 114.742, 162.654, 105.16, 163.882, 92.1376 )
+uv = PoolVector2Array( 147.666, 90.4177, 142.015, 100, 140.541, 112.776, 152.826, 114.742, 162.654, 105.16, 163.882, 92.1376 )
+
+[node name="Polygon2D3" type="Polygon2D" parent="underPlayerTextures/debris"]
+position = Vector2( -1039, -70 )
+texture = ExtResource( 20 )
+polygon = PoolVector2Array( 24.6862, 264.854, 20.9205, 246.862, 30.9623, 242.259, 35.1464, 229.707, 75.3138, 229.289, 69.0377, 257.322, 47.2803, 268.619 )
+uv = PoolVector2Array( 24.6862, 264.854, 20.9205, 246.862, 30.9623, 242.259, 35.1464, 229.707, 75.3138, 229.289, 69.0377, 257.322, 47.2803, 268.619 )
+
+[node name="Polygon2D5" type="Polygon2D" parent="underPlayerTextures/debris"]
+position = Vector2( -1074, 22 )
+texture = ExtResource( 20 )
+polygon = PoolVector2Array( 114.644, 128.452, 95.3975, 150.209, 96.6527, 174.477, 138.075, 172.385, 140.167, 125.523 )
+uv = PoolVector2Array( 114.644, 128.452, 95.3975, 150.209, 96.6527, 174.477, 138.075, 172.385, 140.167, 125.523 )
+
+[node name="Polygon2D4" type="Polygon2D" parent="underPlayerTextures/debris"]
+position = Vector2( -1120, -36 )
+texture = ExtResource( 20 )
+polygon = PoolVector2Array( 108.368, 225.523, 120.502, 235.146, 178.243, 199.582, 169.874, 181.172, 117.992, 202.092 )
+uv = PoolVector2Array( 108.368, 225.523, 120.502, 235.146, 178.243, 199.582, 169.874, 181.172, 117.992, 202.092 )
+
+[node name="Polygon2D6" type="Polygon2D" parent="underPlayerTextures/debris"]
+position = Vector2( -186, 181 )
+texture = ExtResource( 20 )
+polygon = PoolVector2Array( 179.498, 76.1506, 187.448, 43.9331, 209.205, 22.5941, 255.649, 37.2385, 231.381, 71.5481, 189.54, 83.682 )
+uv = PoolVector2Array( 179.498, 76.1506, 187.448, 43.9331, 209.205, 22.5941, 255.649, 37.2385, 231.381, 71.5481, 189.54, 83.682 )
+
+[node name="Polygon2D7" type="Polygon2D" parent="underPlayerTextures/debris"]
+position = Vector2( -216, -35 )
+texture = ExtResource( 20 )
+polygon = PoolVector2Array( 180.753, 223.013, 172.385, 264.017, 194.979, 269.456, 208.368, 257.322, 210.46, 224.268 )
+uv = PoolVector2Array( 180.753, 223.013, 172.385, 264.017, 194.979, 269.456, 208.368, 257.322, 210.46, 224.268 )
+
+[node name="Polygon2D8" type="Polygon2D" parent="underPlayerTextures/debris"]
+position = Vector2( 82, -99 )
+texture = ExtResource( 20 )
+polygon = PoolVector2Array( 164.854, 96.6527, 161.506, 111.715, 170.293, 115.063, 191.632, 112.971, 197.908, 100, 195.816, 84.1004, 167.364, 87.0293 )
+uv = PoolVector2Array( 164.854, 96.6527, 161.506, 111.715, 170.293, 115.063, 191.632, 112.971, 197.908, 100, 195.816, 84.1004, 167.364, 87.0293 )
+
+[node name="Polygon2D9" type="Polygon2D" parent="underPlayerTextures/debris"]
+position = Vector2( 572, -214 )
+texture = ExtResource( 20 )
+polygon = PoolVector2Array( 74.0586, 243.096, 70.7113, 265.272, 82.8452, 268.201, 108.787, 271.13, 125.523, 251.464, 131.799, 231.799, 110.879, 233.054, 94.9791, 228.452 )
+uv = PoolVector2Array( 74.0586, 243.096, 70.7113, 265.272, 82.8452, 268.201, 108.787, 271.13, 125.523, 251.464, 131.799, 231.799, 110.879, 233.054, 94.9791, 228.452 )
+
+[node name="Polygon2D10" type="Polygon2D" parent="underPlayerTextures/debris"]
+position = Vector2( 552, -242 )
+texture = ExtResource( 20 )
+polygon = PoolVector2Array( 131.381, 271.548, 128.452, 301.674, 177.406, 299.163, 171.967, 274.059 )
+uv = PoolVector2Array( 131.381, 271.548, 128.452, 301.674, 177.406, 299.163, 171.967, 274.059 )
+
+[node name="Polygon2D11" type="Polygon2D" parent="underPlayerTextures/debris"]
+position = Vector2( -1522, -225 )
+texture = ExtResource( 20 )
+polygon = PoolVector2Array( 108.368, 225.523, 120.502, 235.146, 178.243, 199.582, 169.874, 181.172, 117.992, 202.092 )
+uv = PoolVector2Array( 108.368, 225.523, 120.502, 235.146, 178.243, 199.582, 169.874, 181.172, 117.992, 202.092 )
+
+[node name="Polygon2D12" type="Polygon2D" parent="underPlayerTextures/debris"]
+position = Vector2( -1790, 82 )
+texture = ExtResource( 20 )
+polygon = PoolVector2Array( 116.554, 123.311, 95.2703, 147.635, 95.6081, 174.662, 123.986, 173.986, 139.527, 152.365, 140.541, 121.284 )
+uv = PoolVector2Array( 116.554, 123.311, 95.2703, 147.635, 95.6081, 174.662, 123.986, 173.986, 139.527, 152.365, 140.541, 121.284 )
+
+[node name="Polygon2D13" type="Polygon2D" parent="underPlayerTextures/debris"]
+position = Vector2( -1786, -16 )
+texture = ExtResource( 20 )
+polygon = PoolVector2Array( 127.703, 251.689, 154.392, 269.257, 171.284, 263.176, 170.946, 235.811, 138.514, 234.797 )
+uv = PoolVector2Array( 127.703, 251.689, 154.392, 269.257, 171.284, 263.176, 170.946, 235.811, 138.514, 234.797 )
+
+[node name="Polygon2D14" type="Polygon2D" parent="underPlayerTextures/debris"]
+position = Vector2( -1717, -44 )
+texture = ExtResource( 20 )
+polygon = PoolVector2Array( 61.1487, 262.162, 47.973, 277.027, 54.7297, 304.054, 77.3649, 287.5, 80.7432, 270.946 )
+uv = PoolVector2Array( 61.1487, 262.162, 47.973, 277.027, 54.7297, 304.054, 77.3649, 287.5, 80.7432, 270.946 )
+
+[node name="Polygon2D15" type="Polygon2D" parent="underPlayerTextures/debris"]
+position = Vector2( -1772, -98 )
+texture = ExtResource( 20 )
+polygon = PoolVector2Array( 126.351, 83.7838, 116.216, 102.365, 115.203, 113.851, 135.811, 111.149, 144.932, 93.5811, 143.919, 85.1351 )
+uv = PoolVector2Array( 126.351, 83.7838, 116.216, 102.365, 115.203, 113.851, 135.811, 111.149, 144.932, 93.5811, 143.919, 85.1351 )
+
+[node name="plants" type="Node2D" parent="underPlayerTextures"]
+
+[node name="Polygon2D" type="Polygon2D" parent="underPlayerTextures/plants"]
+position = Vector2( 1170, 109 )
+texture = ExtResource( 15 )
+polygon = PoolVector2Array( 24.2678, 23.431, 31.3807, 89.1213, 64.8536, 85.7741, 63.1799, 17.9916 )
+uv = PoolVector2Array( 24.2678, 23.431, 31.3807, 89.1213, 64.8536, 85.7741, 63.1799, 17.9916 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="underPlayerTextures/plants"]
+position = Vector2( 1170, 109 )
+texture = ExtResource( 15 )
+polygon = PoolVector2Array( 67.364, 130.126, 9.62343, 146.444, 3.76569, 202.092, 110.879, 193.305, 103.347, 138.494 )
+uv = PoolVector2Array( 67.364, 130.126, 9.62343, 146.444, 3.76569, 202.092, 110.879, 193.305, 103.347, 138.494 )
+
+[node name="Polygon2D3" type="Polygon2D" parent="underPlayerTextures/plants"]
+position = Vector2( 1131, 112 )
+texture = ExtResource( 15 )
+polygon = PoolVector2Array( 149.372, 45.6067, 160.251, 85.3556, 189.121, 77.4059, 194.142, 34.728 )
+uv = PoolVector2Array( 149.372, 45.6067, 160.251, 85.3556, 189.121, 77.4059, 194.142, 41.0042 )
+
+[node name="Polygon2D4" type="Polygon2D" parent="underPlayerTextures/plants"]
+position = Vector2( 1286, 395 )
+texture = ExtResource( 15 )
+polygon = PoolVector2Array( 125.523, 25.9414, 109.205, 54.8117, 133.054, 98.7448, 152.72, 57.7406 )
+uv = PoolVector2Array( 121.339, 33.4728, 109.205, 54.8117, 133.054, 98.7448, 152.72, 57.7406 )
+
+[node name="Polygon2D5" type="Polygon2D" parent="underPlayerTextures/plants"]
+position = Vector2( 1763, 157 )
+texture = ExtResource( 15 )
+polygon = PoolVector2Array( 159.833, 117.992, 102.929, 143.096, 140.586, 197.908, 182.845, 172.803, 178.661, 143.515 )
+uv = PoolVector2Array( 159.833, 117.992, 102.929, 143.096, 140.586, 197.908, 182.845, 172.803, 178.661, 143.515 )
+
+[node name="Polygon2D6" type="Polygon2D" parent="underPlayerTextures/plants"]
+position = Vector2( 1854, 170 )
+texture = ExtResource( 15 )
+polygon = PoolVector2Array( 62.3431, 53.5565, 77.8243, 91.2134, 114.226, 51.046, 104.184, 4.60251 )
+uv = PoolVector2Array( 62.3431, 53.5565, 77.8243, 91.2134, 114.226, 51.046, 104.184, 4.60251 )
+
+[node name="Polygon2D7" type="Polygon2D" parent="underPlayerTextures/plants"]
+position = Vector2( 2442, 256 )
+rotation = 1.56926
+texture = ExtResource( 15 )
+polygon = PoolVector2Array( 201.255, 89.5397, 168.619, 129.707, 187.448, 179.498, 199.582, 179.916, 201.255, 165.272, 209.205, 154.812 )
+uv = PoolVector2Array( 201.255, 89.5397, 168.619, 129.707, 187.448, 179.498, 199.582, 179.916, 201.255, 165.272, 209.205, 154.812 )
+
+[node name="Polygon2D8" type="Polygon2D" parent="underPlayerTextures/plants"]
+position = Vector2( 2142, 359 )
+rotation = -0.00801218
+texture = ExtResource( 15 )
+polygon = PoolVector2Array( 149.791, 46.8619, 164.017, 87.0293, 194.142, 55.2301, 181.172, 20.0837 )
+uv = PoolVector2Array( 149.791, 46.8619, 164.017, 87.0293, 194.142, 55.2301, 181.172, 20.0837 )
+
+[node name="Polygon2D9" type="Polygon2D" parent="underPlayerTextures/plants"]
+position = Vector2( 2727.23, 107.008 )
+texture = ExtResource( 15 )
+polygon = PoolVector2Array( 24.2678, 23.431, 31.3807, 89.1213, 64.8536, 85.7741, 63.1799, 17.9916 )
+uv = PoolVector2Array( 24.2678, 23.431, 31.3807, 89.1213, 64.8536, 85.7741, 63.1799, 17.9916 )
+
+[node name="Polygon2D10" type="Polygon2D" parent="underPlayerTextures/plants"]
+position = Vector2( 2727.23, 107.008 )
+texture = ExtResource( 15 )
+polygon = PoolVector2Array( 67.364, 130.126, 9.62343, 146.444, 3.76569, 202.092, 110.879, 193.305, 103.347, 138.494 )
+uv = PoolVector2Array( 67.364, 130.126, 9.62343, 146.444, 3.76569, 202.092, 110.879, 193.305, 103.347, 138.494 )
+
+[node name="Polygon2D11" type="Polygon2D" parent="underPlayerTextures/plants"]
+position = Vector2( 2688.23, 110.008 )
+texture = ExtResource( 15 )
+polygon = PoolVector2Array( 149.372, 45.6067, 160.251, 85.3556, 189.121, 77.4059, 194.142, 34.728 )
+uv = PoolVector2Array( 149.372, 45.6067, 160.251, 85.3556, 189.121, 77.4059, 194.142, 41.0042 )
+
+[node name="Polygon2D12" type="Polygon2D" parent="underPlayerTextures/plants"]
+position = Vector2( 2656, 186 )
+texture = ExtResource( 15 )
+polygon = PoolVector2Array( 125.523, 25.9414, 109.205, 54.8117, 133.054, 98.7448, 152.72, 57.7406 )
+uv = PoolVector2Array( 121.339, 33.4728, 109.205, 54.8117, 133.054, 98.7448, 152.72, 57.7406 )
+
+[node name="Polygon2D13" type="Polygon2D" parent="underPlayerTextures/plants"]
+position = Vector2( 2580, 243 )
+texture = ExtResource( 15 )
+polygon = PoolVector2Array( 159.833, 117.992, 102.929, 143.096, 140.586, 197.908, 182.845, 172.803, 178.661, 143.515 )
+uv = PoolVector2Array( 159.833, 117.992, 102.929, 143.096, 140.586, 197.908, 182.845, 172.803, 178.661, 143.515 )
+
+[node name="Polygon2D14" type="Polygon2D" parent="underPlayerTextures/plants"]
+position = Vector2( 2679, 338 )
+texture = ExtResource( 15 )
+polygon = PoolVector2Array( 62.3431, 53.5565, 77.8243, 91.2134, 114.226, 51.046, 104.184, 4.60251 )
+uv = PoolVector2Array( 62.3431, 53.5565, 77.8243, 91.2134, 114.226, 51.046, 104.184, 4.60251 )
+
+[node name="Polygon2D15" type="Polygon2D" parent="underPlayerTextures/plants"]
+position = Vector2( 3513, 36 )
+rotation = 1.56926
+texture = ExtResource( 15 )
+polygon = PoolVector2Array( 201.255, 89.5397, 168.619, 129.707, 187.448, 179.498, 199.582, 179.916, 201.255, 165.272, 209.205, 154.812 )
+uv = PoolVector2Array( 201.255, 89.5397, 168.619, 129.707, 187.448, 179.498, 199.582, 179.916, 201.255, 165.272, 209.205, 154.812 )
+
+[node name="Polygon2D16" type="Polygon2D" parent="underPlayerTextures/plants"]
+position = Vector2( 3162, 143 )
+rotation = -0.00801218
+texture = ExtResource( 15 )
+polygon = PoolVector2Array( 149.791, 46.8619, 164.017, 87.0293, 194.142, 55.2301, 181.172, 20.0837 )
+uv = PoolVector2Array( 149.791, 46.8619, 164.017, 87.0293, 194.142, 55.2301, 181.172, 20.0837 )
+
+[node name="Polygon2D17" type="Polygon2D" parent="underPlayerTextures/plants"]
+position = Vector2( 3172, 135 )
+rotation = -0.00801218
+texture = ExtResource( 15 )
+polygon = PoolVector2Array( 192.887, 67.7824, 214.644, 92.887, 251.464, 71.1297, 222.594, 33.8912 )
+uv = PoolVector2Array( 192.887, 67.7824, 214.644, 92.887, 251.464, 71.1297, 222.594, 33.8912 )
+
+[node name="Polygon2D18" type="Polygon2D" parent="underPlayerTextures/plants"]
+position = Vector2( 3319, 217 )
+rotation = -0.00801218
+texture = ExtResource( 15 )
+polygon = PoolVector2Array( 200.418, 168.201, 218.828, 187.029, 292.469, 189.54, 308.787, 116.318, 209.623, 129.707, 208.368, 156.067 )
+uv = PoolVector2Array( 200.418, 168.201, 218.828, 187.029, 292.469, 189.54, 308.787, 116.318, 209.623, 129.707, 208.368, 156.067 )
+
+[node name="Polygon2D19" type="Polygon2D" parent="underPlayerTextures/plants"]
+position = Vector2( 3092, 338 )
+rotation = -0.00801218
+texture = ExtResource( 15 )
+polygon = PoolVector2Array( 10.4603, 42.6778, 61.0879, 117.155, 114.226, 54.3933, 108.368, 4.1841 )
+uv = PoolVector2Array( 16.7364, 55.2301, 61.0879, 117.155, 115.481, 51.8828, 108.368, 4.1841 )
+
+[node name="Polygon2D20" type="Polygon2D" parent="underPlayerTextures/plants"]
+position = Vector2( 96, 330 )
+texture = ExtResource( 15 )
+polygon = PoolVector2Array( 24.2678, 23.431, 31.3807, 89.1213, 64.8536, 85.7741, 63.1799, 17.9916 )
+uv = PoolVector2Array( 24.2678, 23.431, 31.3807, 89.1213, 64.8536, 85.7741, 63.1799, 17.9916 )
+
+[node name="Polygon2D21" type="Polygon2D" parent="underPlayerTextures/plants"]
+position = Vector2( 32, 347 )
+texture = ExtResource( 15 )
+polygon = PoolVector2Array( 149.18, 49.1803, 166.393, 88.2514, 195.902, 52.1858, 184.973, 28.4153 )
+uv = PoolVector2Array( 149.18, 49.1803, 166.393, 88.2514, 195.902, 52.1858, 184.973, 28.4153 )
+
+[node name="Polygon2D22" type="Polygon2D" parent="underPlayerTextures/plants"]
+position = Vector2( -81, 301 )
+rotation = 0.0464002
+texture = ExtResource( 15 )
+polygon = PoolVector2Array( 210.383, 99.7268, 200.273, 124.044, 227.869, 127.322, 231.421, 107.377 )
+uv = PoolVector2Array( 210.383, 99.7268, 200.273, 124.044, 227.869, 127.322, 231.421, 107.377 )
+
+[node name="Polygon2D23" type="Polygon2D" parent="underPlayerTextures/plants"]
+position = Vector2( 275, 113 )
+texture = ExtResource( 15 )
+polygon = PoolVector2Array( 111.202, 41.2568, 116.667, 77.8689, 146.995, 86.3388, 148.361, 33.0601 )
+uv = PoolVector2Array( 110.929, 48.3607, 116.667, 77.8689, 146.995, 86.3388, 148.361, 33.0601 )
+
+[node name="Polygon2D24" type="Polygon2D" parent="underPlayerTextures/plants"]
+position = Vector2( 266, 91 )
+texture = ExtResource( 15 )
+polygon = PoolVector2Array( 214.496, 125.553, 176.658, 160.934, 187.224, 180.098, 299.017, 187.715, 264.865, 120.885 )
+uv = PoolVector2Array( 214.496, 125.553, 176.658, 160.934, 187.224, 180.098, 299.017, 187.715, 267.322, 119.902 )
+
+[node name="trash" type="Node2D" parent="underPlayerTextures"]
+position = Vector2( 2510, 218 )
+
+[node name="Polygon2D" type="Polygon2D" parent="underPlayerTextures/trash"]
+position = Vector2( 130, 104 )
+texture = ExtResource( 16 )
+polygon = PoolVector2Array( 67.364, 18.41, 34.3096, 54.8117, 62.7615, 69.8745, 94.9791, 50.6276 )
+uv = PoolVector2Array( 59.4142, 24.2678, 34.3096, 54.8117, 63.1799, 69.0377, 92.887, 51.046 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="underPlayerTextures/trash"]
+position = Vector2( -1072, -14 )
+texture = ExtResource( 16 )
+polygon = PoolVector2Array( 106.276, 70.2929, 72.3849, 92.887, 86.6109, 111.297, 118.828, 89.5397 )
+uv = PoolVector2Array( 106.276, 70.2929, 72.3849, 92.887, 86.1925, 109.205, 118.828, 89.5397 )
+
+[node name="Polygon2D3" type="Polygon2D" parent="underPlayerTextures/trash"]
+position = Vector2( -1873, -54 )
+texture = ExtResource( 16 )
+polygon = PoolVector2Array( 79.9163, 141.004, 69.4561, 165.69, 97.0711, 179.079, 107.531, 150.628 )
+uv = PoolVector2Array( 79.9163, 141.004, 69.4561, 165.69, 97.0711, 179.079, 107.531, 150.628 )
+
+[node name="Polygon2D4" type="Polygon2D" parent="underPlayerTextures/trash"]
+position = Vector2( -2077, 72 )
+texture = ExtResource( 16 )
+polygon = PoolVector2Array( 182.008, 136.402, 165.272, 152.301, 182.008, 167.364, 200, 150.209 )
+uv = PoolVector2Array( 182.008, 136.402, 165.272, 152.301, 182.008, 167.364, 200, 150.209 )
+
+[node name="Polygon2D5" type="Polygon2D" parent="underPlayerTextures/trash"]
+position = Vector2( -1367, -49 )
+texture = ExtResource( 16 )
+polygon = PoolVector2Array( 117.155, 25.523, 90.795, 51.4644, 123.431, 69.0377, 147.699, 38.0753 )
+uv = PoolVector2Array( 117.155, 25.523, 90.795, 51.4644, 123.431, 69.0377, 147.699, 38.0753 )
+
+[node name="Polygon2D6" type="Polygon2D" parent="underPlayerTextures/trash"]
+position = Vector2( -732, -23 )
+texture = ExtResource( 16 )
+polygon = PoolVector2Array( 150.209, 79.4979, 156.067, 105.858, 182.427, 102.51, 179.079, 76.1506 )
+uv = PoolVector2Array( 150.209, 79.4979, 156.067, 105.858, 182.427, 102.51, 179.079, 76.1506 )
+
+[node name="Polygon2D7" type="Polygon2D" parent="underPlayerTextures/trash"]
+position = Vector2( -532, -130 )
+texture = ExtResource( 16 )
+polygon = PoolVector2Array( 140.167, 110.46, 131.381, 131.381, 151.046, 135.565, 162.343, 120.502 )
+uv = PoolVector2Array( 140.167, 110.46, 131.381, 131.381, 151.046, 135.565, 162.343, 120.502 )
+
+[node name="Polygon2D9" type="Polygon2D" parent="underPlayerTextures/trash"]
+position = Vector2( 763, -185 )
+texture = ExtResource( 16 )
+polygon = PoolVector2Array( 66.5272, 184.1, 94.1423, 212.134, 109.205, 192.887, 93.3054, 174.895 )
+uv = PoolVector2Array( 66.5272, 184.1, 94.1423, 212.134, 109.205, 192.887, 93.3054, 174.895 )
+
+[node name="Polygon2D8" type="Polygon2D" parent="underPlayerTextures/trash"]
+position = Vector2( 660, -45 )
+texture = ExtResource( 16 )
+polygon = PoolVector2Array( 179.916, 25.1046, 169.456, 50.2092, 197.49, 63.1799, 212.552, 41.0042 )
+uv = PoolVector2Array( 179.916, 25.1046, 169.456, 50.2092, 197.49, 63.1799, 212.552, 41.0042 )
+
+[node name="Car0Blood" type="Sprite" parent="underPlayerTextures"]
+position = Vector2( 2510, 218 )
+texture = ExtResource( 23 )
+
+[node name="Polygon2D" type="Polygon2D" parent="underPlayerTextures"]
+position = Vector2( 2613, 165 )
+texture = ExtResource( 27 )
+polygon = PoolVector2Array( 157.248, 77.6413, 159.951, 129.73, 204.668, 129.484, 250.123, 96.3145, 244.963, 43.9803, 198.526, 46.9287 )
+uv = PoolVector2Array( 157.248, 77.6413, 159.951, 129.73, 204.668, 129.484, 250.123, 96.3145, 244.963, 43.9803, 198.526, 46.9287 )
+
+[node name="下foundry" type="Node2D" parent="."]
+
+[node name="tiles" type="Node2D" parent="下foundry"]
+
+[node name="walls" type="Node2D" parent="下foundry/tiles"]
+
+[node name="Metal5" type="Sprite" parent="下foundry/tiles/walls"]
+modulate = Color( 0.796078, 0.796078, 0.796078, 1 )
+position = Vector2( 5344, -38.0001 )
+rotation = -2.66686
+scale = Vector2( 1, -2 )
+texture = ExtResource( 26 )
+offset = Vector2( -23, -133 )
+
+[node name="Metal7" type="Sprite" parent="下foundry/tiles/walls"]
+modulate = Color( 0.796078, 0.796078, 0.796078, 1 )
+position = Vector2( 5250.3, -54.3309 )
+rotation = -2.66686
+scale = Vector2( 1, -2 )
+texture = ExtResource( 26 )
+offset = Vector2( -23, -133 )
+
+[node name="Metal8" type="Sprite" parent="下foundry/tiles/walls"]
+modulate = Color( 0.796078, 0.796078, 0.796078, 1 )
+position = Vector2( 5125.3, -95.3309 )
+rotation = -2.66686
+scale = Vector2( 1, -2 )
+texture = ExtResource( 26 )
+offset = Vector2( -23, -133 )
+
+[node name="Metal9" type="Sprite" parent="下foundry/tiles/walls"]
+modulate = Color( 0.796078, 0.796078, 0.796078, 1 )
+position = Vector2( 5017.03, -10.9525 )
+rotation = -2.66686
+scale = Vector2( 1, -2 )
+texture = ExtResource( 26 )
+offset = Vector2( -23, -133 )
+
+[node name="Metal10" type="Sprite" parent="下foundry/tiles/walls"]
+modulate = Color( 0.796078, 0.796078, 0.796078, 1 )
+position = Vector2( 4936.03, 29.0475 )
+rotation = -2.66686
+scale = Vector2( 1, -2 )
+texture = ExtResource( 26 )
+offset = Vector2( -23, -133 )
+
+[node name="Metal11" type="Sprite" parent="下foundry/tiles/walls"]
+modulate = Color( 0.796078, 0.796078, 0.796078, 1 )
+position = Vector2( 4833.79, 12.9213 )
+rotation = -2.66686
+scale = Vector2( 1, -2 )
+texture = ExtResource( 26 )
+offset = Vector2( -23, -133 )
+
+[node name="Metal12" type="Sprite" parent="下foundry/tiles/walls"]
+modulate = Color( 0.796078, 0.796078, 0.796078, 1 )
+position = Vector2( 4708.79, -28.0787 )
+rotation = -2.66686
+scale = Vector2( 1, -2 )
+texture = ExtResource( 26 )
+offset = Vector2( -23, -133 )
+
+[node name="Metal13" type="Sprite" parent="下foundry/tiles/walls"]
+modulate = Color( 0.796078, 0.796078, 0.796078, 1 )
+position = Vector2( 4598.03, -15.9525 )
+rotation = -2.66686
+scale = Vector2( 1, -2 )
+texture = ExtResource( 26 )
+offset = Vector2( -23, -133 )
+
+[node name="Metal14" type="Sprite" parent="下foundry/tiles/walls"]
+modulate = Color( 0.796078, 0.796078, 0.796078, 1 )
+position = Vector2( 4517.03, 24.0475 )
+rotation = -2.66686
+scale = Vector2( 1, -2 )
+texture = ExtResource( 26 )
+offset = Vector2( -23, -133 )
+
+[node name="Metal15" type="Sprite" parent="下foundry/tiles/walls"]
+modulate = Color( 0.796078, 0.796078, 0.796078, 1 )
+position = Vector2( 4414.79, 7.92126 )
+rotation = -2.66686
+scale = Vector2( 1, -2 )
+texture = ExtResource( 26 )
+offset = Vector2( -23, -133 )
+
+[node name="Metal16" type="Sprite" parent="下foundry/tiles/walls"]
+modulate = Color( 0.796078, 0.796078, 0.796078, 1 )
+position = Vector2( 4289.79, -33.0787 )
+rotation = -2.66686
+scale = Vector2( 1, -2 )
+texture = ExtResource( 26 )
+offset = Vector2( -23, -133 )
+
+[node name="Metal17" type="Sprite" parent="下foundry/tiles/walls"]
+modulate = Color( 0.796078, 0.796078, 0.796078, 1 )
+position = Vector2( 4120.54, -40.2047 )
+rotation = -2.66686
+scale = Vector2( 1, -2 )
+texture = ExtResource( 26 )
+offset = Vector2( -23, -133 )
+
+[node name="Metal1" type="Sprite" parent="下foundry/tiles"]
+position = Vector2( 3932, 324 )
+texture = ExtResource( 26 )
+offset = Vector2( -23, -133 )
+
+[node name="Metal2" type="Sprite" parent="下foundry/tiles"]
+position = Vector2( 4350, 323 )
+texture = ExtResource( 26 )
+offset = Vector2( -23, -133 )
+
+[node name="Metal3" type="Sprite" parent="下foundry/tiles"]
+position = Vector2( 4774, 323 )
+texture = ExtResource( 26 )
+offset = Vector2( -23, -133 )
+
+[node name="Metal4" type="Sprite" parent="下foundry/tiles"]
+position = Vector2( 5192, 322 )
+texture = ExtResource( 26 )
+offset = Vector2( -23, -133 )
+
+[node name="SideCover1" type="Sprite" parent="下foundry/tiles"]
+position = Vector2( 3945, -154 )
+texture = ExtResource( 19 )
+
+[node name="SideCover2" type="Sprite" parent="下foundry/tiles"]
+position = Vector2( 4382, -156 )
+texture = ExtResource( 19 )
+
+[node name="SideCover3" type="Sprite" parent="下foundry/tiles"]
+position = Vector2( 4841, -155 )
+texture = ExtResource( 19 )
+
+[node name="plates" type="Node2D" parent="下foundry"]
+
+[node name="Polygon2D" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 3523, -194 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 342.857, 323.377, 251.299, 427.273, 398.052, 429.221, 503.896, 328.571 )
+uv = PoolVector2Array( 342.857, 323.377, 251.299, 427.273, 398.052, 429.221, 503.896, 328.571 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 3606, 71 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 342.857, 323.377, 251.299, 427.273, 398.052, 429.221, 503.896, 328.571 )
+uv = PoolVector2Array( 342.857, 323.377, 251.299, 427.273, 398.052, 429.221, 503.896, 328.571 )
+
+[node name="Polygon2D3" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 4181, -105 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 342.857, 323.377, 251.299, 427.273, 398.052, 429.221, 503.896, 328.571 )
+uv = PoolVector2Array( 342.857, 323.377, 251.299, 427.273, 398.052, 429.221, 503.896, 328.571 )
+
+[node name="Polygon2D4" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 4800, 70 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 342.857, 323.377, 251.299, 427.273, 398.052, 429.221, 503.896, 328.571 )
+uv = PoolVector2Array( 342.857, 323.377, 251.299, 427.273, 398.052, 429.221, 503.896, 328.571 )
+
+[node name="Polygon2D5" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 3306, -123 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 401.402, 433.178, 488.318, 435.047, 577.57, 339.72, 488.785, 341.122 )
+uv = PoolVector2Array( 401.402, 433.178, 488.318, 435.047, 577.57, 339.72, 488.785, 341.122 )
+
+[node name="Polygon2D6" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 3617, 62 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 401.402, 433.178, 488.318, 435.047, 577.57, 339.72, 488.785, 341.122 )
+uv = PoolVector2Array( 401.402, 433.178, 488.318, 435.047, 577.57, 339.72, 488.785, 341.122 )
+
+[node name="Polygon2D7" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 3956, -116 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 401.402, 433.178, 488.318, 435.047, 577.57, 339.72, 488.785, 341.122 )
+uv = PoolVector2Array( 401.402, 433.178, 488.318, 435.047, 577.57, 339.72, 488.785, 341.122 )
+
+[node name="Polygon2D8" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 3887, -116 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 401.402, 433.178, 488.318, 435.047, 577.57, 339.72, 488.785, 341.122 )
+uv = PoolVector2Array( 401.402, 433.178, 488.318, 435.047, 577.57, 339.72, 488.785, 341.122 )
+
+[node name="Polygon2D9" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 4794, -15 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 401.402, 433.178, 488.318, 435.047, 577.57, 339.72, 488.785, 341.122 )
+uv = PoolVector2Array( 401.402, 433.178, 488.318, 435.047, 577.57, 339.72, 488.785, 341.122 )
+
+[node name="Polygon2D10" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 4583, 61 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 401.402, 433.178, 488.318, 435.047, 577.57, 339.72, 488.785, 341.122 )
+uv = PoolVector2Array( 401.402, 433.178, 488.318, 435.047, 577.57, 339.72, 488.785, 341.122 )
+
+[node name="Polygon2D11" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 3876, -36 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 401.402, 433.178, 488.318, 435.047, 577.57, 339.72, 488.785, 341.122 )
+uv = PoolVector2Array( 401.402, 433.178, 488.318, 435.047, 577.57, 339.72, 488.785, 341.122 )
+
+[node name="Polygon2D12" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 4747, -199 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 401.402, 433.178, 488.318, 435.047, 577.57, 339.72, 488.785, 341.122 )
+uv = PoolVector2Array( 401.402, 433.178, 488.318, 435.047, 577.57, 339.72, 488.785, 341.122 )
+
+[node name="Polygon2D13" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 3307, -134 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 527.57, 394.393, 561.215, 357.009, 613.084, 359.346, 578.972, 399.533 )
+uv = PoolVector2Array( 527.57, 394.393, 561.215, 357.009, 613.084, 359.346, 578.972, 399.533 )
+
+[node name="Polygon2D14" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 3506, 21 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 527.57, 394.393, 561.215, 357.009, 613.084, 359.346, 578.972, 399.533 )
+uv = PoolVector2Array( 527.57, 394.393, 561.215, 357.009, 613.084, 359.346, 578.972, 399.533 )
+
+[node name="Polygon2D15" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 3749, -45 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 527.57, 394.393, 561.215, 357.009, 613.084, 359.346, 578.972, 399.533 )
+uv = PoolVector2Array( 527.57, 394.393, 561.215, 357.009, 613.084, 359.346, 578.972, 399.533 )
+
+[node name="Polygon2D16" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 3749, 33 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 527.57, 394.393, 561.215, 357.009, 613.084, 359.346, 578.972, 399.533 )
+uv = PoolVector2Array( 527.57, 394.393, 561.215, 357.009, 613.084, 359.346, 578.972, 399.533 )
+
+[node name="Polygon2D17" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 3938, -160 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 527.57, 394.393, 561.215, 357.009, 613.084, 359.346, 578.972, 399.533 )
+uv = PoolVector2Array( 527.57, 394.393, 561.215, 357.009, 613.084, 359.346, 578.972, 399.533 )
+
+[node name="Polygon2D18" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 4051, -77 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 527.57, 394.393, 561.215, 357.009, 613.084, 359.346, 578.972, 399.533 )
+uv = PoolVector2Array( 527.57, 394.393, 561.215, 357.009, 613.084, 359.346, 578.972, 399.533 )
+
+[node name="Polygon2D19" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 3295, 99 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 527.57, 394.393, 561.215, 357.009, 613.084, 359.346, 578.972, 399.533 )
+uv = PoolVector2Array( 527.57, 394.393, 561.215, 357.009, 613.084, 359.346, 578.972, 399.533 )
+
+[node name="Polygon2D20" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 4623, 22 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 527.57, 394.393, 561.215, 357.009, 613.084, 359.346, 578.972, 399.533 )
+uv = PoolVector2Array( 527.57, 394.393, 561.215, 357.009, 613.084, 359.346, 578.972, 399.533 )
+
+[node name="Polygon2D21" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 4777, -60 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 527.57, 394.393, 561.215, 357.009, 613.084, 359.346, 578.972, 399.533 )
+uv = PoolVector2Array( 527.57, 394.393, 561.215, 357.009, 613.084, 359.346, 578.972, 399.533 )
+
+[node name="Polygon2D22" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 4412, 98 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 527.57, 394.393, 561.215, 357.009, 613.084, 359.346, 578.972, 399.533 )
+uv = PoolVector2Array( 527.57, 394.393, 561.215, 357.009, 613.084, 359.346, 578.972, 399.533 )
+
+[node name="Polygon2D23" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 4697, -160 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 527.57, 394.393, 561.215, 357.009, 613.084, 359.346, 578.972, 399.533 )
+uv = PoolVector2Array( 527.57, 394.393, 561.215, 357.009, 613.084, 359.346, 578.972, 399.533 )
+
+[node name="Polygon2D24" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 3611, -210 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 527.57, 394.393, 561.215, 357.009, 613.084, 359.346, 578.972, 399.533 )
+uv = PoolVector2Array( 527.57, 394.393, 561.215, 357.009, 613.084, 359.346, 578.972, 399.533 )
+
+[node name="Polygon2D25" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 3596, -212 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 569.626, 416.822, 614.486, 419.159, 671.028, 360.748, 621.495, 361.215 )
+uv = PoolVector2Array( 569.626, 416.822, 614.486, 419.159, 671.028, 360.748, 621.495, 361.215 )
+
+[node name="Polygon2D26" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 3375, -212 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 569.626, 416.822, 614.486, 419.159, 671.028, 360.748, 621.495, 361.215 )
+uv = PoolVector2Array( 569.626, 416.822, 614.486, 419.159, 671.028, 360.748, 621.495, 361.215 )
+
+[node name="Polygon2D27" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 3213, -105 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 569.626, 416.822, 614.486, 419.159, 671.028, 360.748, 621.495, 361.215 )
+uv = PoolVector2Array( 569.626, 416.822, 614.486, 419.159, 671.028, 360.748, 621.495, 361.215 )
+
+[node name="Polygon2D28" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 3295, 43 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 569.626, 416.822, 614.486, 419.159, 671.028, 360.748, 621.495, 361.215 )
+uv = PoolVector2Array( 569.626, 416.822, 614.486, 419.159, 671.028, 360.748, 621.495, 361.215 )
+
+[node name="Polygon2D29" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 3526, 78 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 569.626, 416.822, 614.486, 419.159, 671.028, 360.748, 621.495, 361.215 )
+uv = PoolVector2Array( 569.626, 416.822, 614.486, 419.159, 671.028, 360.748, 621.495, 361.215 )
+
+[node name="Polygon2D30" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 3826, -47 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 569.626, 416.822, 614.486, 419.159, 671.028, 360.748, 621.495, 361.215 )
+uv = PoolVector2Array( 569.626, 416.822, 614.486, 419.159, 671.028, 360.748, 621.495, 361.215 )
+
+[node name="Polygon2D31" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 3863, -47 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 569.626, 416.822, 614.486, 419.159, 671.028, 360.748, 621.495, 361.215 )
+uv = PoolVector2Array( 569.626, 416.822, 614.486, 419.159, 671.028, 360.748, 621.495, 361.215 )
+
+[node name="Polygon2D32" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 4044, -134 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 569.626, 416.822, 614.486, 419.159, 671.028, 360.748, 621.495, 361.215 )
+uv = PoolVector2Array( 569.626, 416.822, 614.486, 419.159, 671.028, 360.748, 621.495, 361.215 )
+
+[node name="Polygon2D33" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 3685, -102 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 569.626, 416.822, 614.486, 419.159, 671.028, 360.748, 621.495, 361.215 )
+uv = PoolVector2Array( 569.626, 416.822, 614.486, 419.159, 671.028, 360.748, 621.495, 361.215 )
+
+[node name="Polygon2D34" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 4685, -214 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 569.626, 416.822, 614.486, 419.159, 671.028, 360.748, 621.495, 361.215 )
+uv = PoolVector2Array( 569.626, 416.822, 614.486, 419.159, 671.028, 360.748, 621.495, 361.215 )
+
+[node name="Polygon2D35" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 4623, -33 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 569.626, 416.822, 614.486, 419.159, 671.028, 360.748, 621.495, 361.215 )
+uv = PoolVector2Array( 569.626, 416.822, 614.486, 419.159, 671.028, 360.748, 621.495, 361.215 )
+
+[node name="Polygon2D36" type="Polygon2D" parent="下foundry/plates"]
+position = Vector2( 4411, 44 )
+texture = ExtResource( 18 )
+polygon = PoolVector2Array( 569.626, 416.822, 614.486, 419.159, 671.028, 360.748, 621.495, 361.215 )
+uv = PoolVector2Array( 569.626, 416.822, 614.486, 419.159, 671.028, 360.748, 621.495, 361.215 )
+
+[node name="debris" type="Node2D" parent="下foundry"]
+
+[node name="Polygon2D" type="Polygon2D" parent="下foundry/debris"]
+position = Vector2( 4319, 169 )
+texture = ExtResource( 25 )
+polygon = PoolVector2Array( 24.6073, 94.7644, 61.2565, 62.3037, 47.644, 52.8796, 13.6126, 83.7696 )
+uv = PoolVector2Array( 24.6073, 91.0995, 61.2565, 62.3037, 47.644, 52.8796, 13.6126, 83.7696 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="下foundry/debris"]
+position = Vector2( 4133, 323 )
+texture = ExtResource( 25 )
+polygon = PoolVector2Array( 502.473, 126.689, 480.513, 164.527, 514.635, 178.041, 532.203, 144.932 )
+uv = PoolVector2Array( 502.473, 126.689, 480.513, 164.527, 514.635, 178.041, 532.203, 144.932 )
+
+[node name="Polygon2D3" type="Polygon2D" parent="下foundry/debris"]
+position = Vector2( 3985, 166 )
+texture = ExtResource( 25 )
+polygon = PoolVector2Array( 500.446, 27.3649, 479.5, 59.7973, 501.459, 74.3243, 523.081, 62.5 )
+uv = PoolVector2Array( 500.446, 27.3649, 479.5, 59.7973, 501.459, 74.3243, 523.081, 62.5 )
+
+[node name="Polygon2D4" type="Polygon2D" parent="下foundry/debris"]
+position = Vector2( 3867, 339 )
+texture = ExtResource( 25 )
+polygon = PoolVector2Array( 175.108, 78.7162, 156.865, 103.041, 178.486, 112.5, 197.743, 102.027 )
+uv = PoolVector2Array( 175.108, 78.7162, 161.594, 105.405, 178.486, 112.5, 196.392, 103.378 )
+
+[node name="Polygon2D5" type="Polygon2D" parent="下foundry/debris"]
+position = Vector2( 3956, 347 )
+texture = ExtResource( 25 )
+polygon = PoolVector2Array( 121.729, 86.1487, 117, 104.054, 151.121, 107.432, 155.175, 89.527 )
+uv = PoolVector2Array( 121.729, 86.1487, 117, 104.054, 151.121, 107.432, 155.175, 89.527 )
+
+[node name="Polygon2D6" type="Polygon2D" parent="下foundry/debris"]
+position = Vector2( 4155, 176 )
+texture = ExtResource( 25 )
+polygon = PoolVector2Array( 337.27, 25, 345.04, 63.1757, 381.189, 58.7838, 373.419, 26.6892 )
+uv = PoolVector2Array( 337.27, 25, 345.04, 63.1757, 381.189, 58.7838, 373.419, 26.6892 )
+
+[node name="Polygon2D7" type="Polygon2D" parent="下foundry/debris"]
+position = Vector2( 3821, 110 )
+texture = ExtResource( 25 )
+polygon = PoolVector2Array( 113.283, 36.4865, 105.513, 58.4459, 183.554, 58.7838, 178.824, 41.2162 )
+uv = PoolVector2Array( 113.959, 35.1351, 105.513, 58.4459, 183.554, 58.7838, 178.824, 41.2162 )
+
+[node name="Polygon2D8" type="Polygon2D" parent="下foundry/debris"]
+position = Vector2( 4666, 286 )
+texture = ExtResource( 25 )
+polygon = PoolVector2Array( 3.48615, 142.568, 25.4456, 128.041, 57.2024, 150, 39.6348, 170.27, 9.90507, 162.162 )
+uv = PoolVector2Array( 3.48615, 142.568, 25.4456, 128.041, 57.2024, 150, 39.6348, 170.27, 9.90507, 162.162 )
+
+[node name="Polygon2D9" type="Polygon2D" parent="下foundry/debris"]
+position = Vector2( 4661, 433 )
+texture = ExtResource( 25 )
+polygon = PoolVector2Array( 77.1348, 13.5135, 51.1213, 53.0405, 61.9321, 62.8378, 102.473, 34.1216, 91.324, 11.1486 )
+uv = PoolVector2Array( 77.1348, 13.5135, 51.1213, 53.0405, 61.9321, 62.8378, 102.473, 34.1216, 91.324, 11.1486 )
+
+[node name="Polygon2D10" type="Polygon2D" parent="下foundry/debris"]
+position = Vector2( 4596, 321 )
+texture = ExtResource( 25 )
+polygon = PoolVector2Array( 527.135, 80.0676, 526.797, 117.23, 572.405, 110.811, 565.986, 80.4054 )
+uv = PoolVector2Array( 527.135, 80.0676, 526.797, 117.23, 572.405, 110.811, 565.986, 80.4054 )
+
+[node name="Polygon2D11" type="Polygon2D" parent="下foundry/debris"]
+position = Vector2( 4729, 378 )
+texture = ExtResource( 25 )
+polygon = PoolVector2Array( 389.635, 33.7838, 390.648, 68.2432, 414.973, 60.8108, 411.932, 28.7162 )
+uv = PoolVector2Array( 389.635, 33.7838, 390.648, 68.2432, 414.973, 60.8108, 411.932, 28.7162 )
+
+[node name="Polygon2D12" type="Polygon2D" parent="下foundry/debris"]
+position = Vector2( 4658, 390 )
+texture = ExtResource( 25 )
+polygon = PoolVector2Array( 439.297, 16.2162, 416.324, 58.1081, 472.067, 71.6216, 485.243, 33.4459 )
+uv = PoolVector2Array( 439.297, 16.2162, 416.324, 58.1081, 472.067, 71.6216, 485.243, 33.4459 )
+
+[node name="Polygon2D13" type="Polygon2D" parent="下foundry/debris"]
+position = Vector2( 4636, 352 )
+texture = ExtResource( 25 )
+polygon = PoolVector2Array( 479.5, 78.0405, 473.419, 103.041, 514.635, 107.77, 521.392, 84.7973 )
+uv = PoolVector2Array( 479.5, 78.0405, 473.419, 103.041, 514.635, 107.77, 521.392, 84.7973 )
+
+[node name="Polygon2D15" type="Polygon2D" parent="下foundry/debris"]
+position = Vector2( 3418, 401 )
+rotation = -0.149212
+scale = Vector2( 1, 1 )
+texture = ExtResource( 25 )
+polygon = PoolVector2Array( 498.327, 125.581, 479.722, 165.581, 516.001, 182.791, 532.746, 140.465 )
+uv = PoolVector2Array( 498.327, 125.581, 479.722, 165.581, 516.001, 182.791, 532.746, 140.465 )
+
+[node name="Polygon2D14" type="Polygon2D" parent="下foundry/debris"]
+position = Vector2( 3310, 298 )
+texture = ExtResource( 25 )
+polygon = PoolVector2Array( 604.997, 138.494, 610.885, 186.977, 674.141, 183.721, 670.42, 142.791 )
+uv = PoolVector2Array( 604.997, 138.494, 610.885, 186.977, 674.141, 183.721, 670.42, 142.791 )
+
+[node name="Polygon2D16" type="Polygon2D" parent="下foundry/debris"]
+position = Vector2( 3345, 403 )
+texture = ExtResource( 25 )
+polygon = PoolVector2Array( 608.911, 53.0075, 610.038, 84.2105, 642.745, 81.9549, 641.993, 55.6391 )
+uv = PoolVector2Array( 608.911, 53.0075, 610.038, 84.2105, 642.745, 81.9549, 641.993, 55.6391 )
+
+[node name="Polygon2D17" type="Polygon2D" parent="下foundry/debris"]
+position = Vector2( 3316, -188 )
+texture = ExtResource( 10 )
+polygon = PoolVector2Array( 278.899, 554.128, 285.321, 668.807, 368.807, 673.394, 372.477, 550.459 )
+uv = PoolVector2Array( 278.899, 554.128, 285.321, 668.807, 368.807, 673.394, 372.477, 550.459 )
+
+[node name="Polygon2D18" type="Polygon2D" parent="下foundry/debris"]
+position = Vector2( 3487, 360 )
+texture = ExtResource( 27 )
+polygon = PoolVector2Array( 149.541, 52.2936, 152.294, 140.367, 251.376, 141.284, 244.037, 31.1927 )
+uv = PoolVector2Array( 149.541, 52.2936, 152.294, 140.367, 251.376, 141.284, 244.037, 31.1927 )
+
+[node name="brknPlates" type="Node2D" parent="下foundry"]
+
+[node name="Polygon2D" type="Polygon2D" parent="下foundry/brknPlates"]
+position = Vector2( 3755, 67.9999 )
+rotation = -0.425605
+texture = ExtResource( 28 )
+polygon = PoolVector2Array( 98.2684, 71.4286, 45.0216, 130.736, 91.342, 166.667, 148.485, 94.8052 )
+uv = PoolVector2Array( 98.2684, 71.4286, 45.0216, 130.736, 91.342, 166.667, 148.485, 94.8052 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="下foundry/brknPlates"]
+position = Vector2( 3533, -104 )
+rotation = -0.0587045
+texture = ExtResource( 28 )
+polygon = PoolVector2Array( 375.325, 245.022, 342.424, 300.433, 383.55, 325.541, 422.944, 289.177 )
+uv = PoolVector2Array( 375.325, 245.022, 342.424, 300.433, 383.55, 325.541, 422.944, 289.177 )
+
+[node name="Polygon2D3" type="Polygon2D" parent="下foundry/brknPlates"]
+position = Vector2( 3637, -28 )
+rotation = -0.0587045
+texture = ExtResource( 28 )
+polygon = PoolVector2Array( 491.892, 383.784, 437.162, 463.514, 558.784, 463.514, 573.649, 405.405 )
+uv = PoolVector2Array( 491.892, 383.784, 437.162, 463.514, 558.784, 463.514, 573.649, 405.405 )
+
+[node name="Polygon2D4" type="Polygon2D" parent="下foundry/brknPlates"]
+position = Vector2( 3752, -11 )
+rotation = -0.130993
+texture = ExtResource( 28 )
+polygon = PoolVector2Array( 637.162, 245.946, 593.919, 314.189, 689.189, 360.135, 729.054, 275 )
+uv = PoolVector2Array( 637.162, 245.946, 593.919, 314.189, 689.189, 360.135, 729.054, 275 )
+
+[node name="Polygon2D5" type="Polygon2D" parent="下foundry/brknPlates"]
+position = Vector2( 3399, -368 )
+rotation = -0.0587045
+texture = ExtResource( 28 )
+polygon = PoolVector2Array( 594.595, 529.73, 569.595, 593.919, 642.568, 603.378, 666.892, 554.054 )
+uv = PoolVector2Array( 594.595, 529.73, 569.595, 593.919, 642.568, 603.378, 666.892, 554.054 )
+
+[node name="Polygon2D6" type="Polygon2D" parent="下foundry/brknPlates"]
+position = Vector2( 3950, 241 )
+rotation = -0.349951
+texture = ExtResource( 28 )
+polygon = PoolVector2Array( 450, 308.108, 554.73, 343.919, 577.703, 275.676, 494.595, 250 )
+uv = PoolVector2Array( 450, 308.108, 554.73, 343.919, 577.703, 275.676, 494.595, 250 )
+
+[node name="Polygon2D7" type="Polygon2D" parent="下foundry/brknPlates"]
+position = Vector2( 5098, -510 )
+rotation = -0.0587045
+texture = ExtResource( 28 )
+polygon = PoolVector2Array( 31.4815, 597.222, -9.25926, 687.037, 79.6296, 704.63, 132.407, 617.593 )
+uv = PoolVector2Array( 31.4815, 597.222, -9.25926, 687.037, 79.6296, 704.63, 132.407, 617.593 )
+
+[node name="Polygon2D8" type="Polygon2D" parent="下foundry/brknPlates"]
+position = Vector2( 4338, 27 )
+rotation = 0.00526391
+texture = ExtResource( 28 )
+polygon = PoolVector2Array( 336.486, 387.838, 315.541, 453.378, 395.27, 462.838, 410.811, 394.595 )
+uv = PoolVector2Array( 336.486, 387.838, 315.541, 453.378, 395.27, 462.838, 410.811, 394.595 )
+
+[node name="Polygon2D9" type="Polygon2D" parent="下foundry/brknPlates"]
+position = Vector2( 4510, 150 )
+rotation = 0.0627472
+texture = ExtResource( 28 )
+polygon = PoolVector2Array( 213.514, 248.649, 191.892, 289.865, 266.892, 350.676, 283.108, 281.081 )
+uv = PoolVector2Array( 213.514, 248.649, 191.892, 289.865, 251.351, 335.135, 283.108, 281.081 )
+
+[node name="Polygon2D10" type="Polygon2D" parent="下foundry/brknPlates"]
+position = Vector2( 4549, 53 )
+rotation = -0.0587045
+texture = ExtResource( 28 )
+polygon = PoolVector2Array( 74.3243, 363.514, 7.43243, 419.595, 83.1081, 462.838, 129.054, 393.919 )
+uv = PoolVector2Array( 74.3243, 363.514, 7.43243, 419.595, 83.1081, 462.838, 129.054, 393.919 )
+
+[node name="misc" type="Node2D" parent="."]
+
+[node name="tiles" type="Node2D" parent="misc"]
+
+[node name="DirtPath1" type="Sprite" parent="misc/tiles"]
+position = Vector2( 5595, 189 )
+texture = ExtResource( 22 )
+
+[node name="DirtPath2" type="Sprite" parent="misc/tiles"]
+position = Vector2( 6021, 189 )
+texture = ExtResource( 22 )
+
+[node name="DirtPath3" type="Sprite" parent="misc/tiles"]
+position = Vector2( 6447, 189 )
+texture = ExtResource( 22 )
+
+[node name="DirtPath4" type="Sprite" parent="misc/tiles"]
+position = Vector2( 6873, 189 )
+texture = ExtResource( 22 )
+
+[node name="Samurai" type="Sprite" parent="misc"]
+position = Vector2( 6646, 198 )
+texture = ExtResource( 30 )
+
+[node name="Excavator" type="Sprite" parent="."]
+position = Vector2( 4946, 114 )
+texture = ExtResource( 24 )
 
 [node name="Interactables" type="Node2D" parent="."]
 
@@ -126,7 +1037,8 @@ content = [ [ "item4", 2 ], [ "item3", 1 ] ]
 ID = "debugchest"
 
 [node name="Enemy" parent="." instance=ExtResource( 14 )]
-position = Vector2( 1336, 257 )
+visible = false
+position = Vector2( 500, 246 )
 scale = Vector2( 1.35269, 1.35269 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
@@ -135,19 +1047,16 @@ position = Vector2( 970, 284 )
 [node name="OverPlayerTextures" type="Node2D" parent="."]
 
 [node name="Grid1" type="Sprite" parent="OverPlayerTextures"]
+visible = false
 position = Vector2( 2288, 176 )
 texture = ExtResource( 4 )
 
 [node name="Collisions" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions"]
-position = Vector2( 1564, 342 )
+position = Vector2( 3686.5, 342 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions"]
 position = Vector2( 726, 191 )
-shape = SubResource( 2 )
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisions"]
-position = Vector2( 2494, 189 )
 shape = SubResource( 2 )
